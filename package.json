@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "css": "./node_modules/.bin/node-sass -wro css scss/",
+    "server": "./node_modules/.bin/webpack-dev-server --config webpack.dev.config.js"
   },
   "repository": {
     "type": "git",
@@ -16,5 +18,11 @@
   "bugs": {
     "url": "https://github.com/Pegggy/QQmusic/issues"
   },
-  "homepage": "https://github.com/Pegggy/QQmusic#readme"
+  "homepage": "https://github.com/Pegggy/QQmusic#readme",
+  "devDependencies": {
+    "node-sass": "^4.5.3",
+    "sass-loader": "^6.0.6",
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.9.1"
+  }
 }

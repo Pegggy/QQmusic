@@ -1,0 +1,14 @@
+@import "var";
+@import "reset";
+body{
+  background: $body-background;
+}
+#header {
+  height: $header-height;
+  background: $header-background;
+  #logo{
+    height: $logo-height;
+    margin: 9px 0 0 10px;
+
+  }
+}
