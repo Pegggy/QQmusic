@@ -2,6 +2,9 @@ body, dl, dd, h1, h2, h3, h4, h5, h6, p, form, ol, ul {
   margin: 0;
   padding: 0; }
 
+a {
+  text-decoration: none; }
+
 h1, h2, h3, h4, h5, h6 {
   font-weight: normal; }
 
@@ -31,8 +34,43 @@ h6 {
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
+.slider {
+  width: 100%;
+  overflow: hidden; }
+  .slider .slider-wrap {
+    width: 500%;
+    display: flex; }
+  .slider .slider-item > a {
+    display: block; }
+    .slider .slider-item > a img {
+      width: 100%; }
+
+.nav {
+  display: flex;
+  justify-content: space-around;
+  height: 40px;
+  line-height: 40px;
+  background: #fff;
+  text-align: center; }
+  .nav a {
+    color: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    position: relative; }
+    .nav a.highlight {
+      color: #31c27c; }
+      .nav a.highlight:after {
+        content: '';
+        display: block;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 2px;
+        width: 100%;
+        background: #31c27c; }
+
 body {
-  background: #f4f4f4; }
+  background: #f4f4f4;
+  color: #555; }
 
 #header {
   height: 44px;

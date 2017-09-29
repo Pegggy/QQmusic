@@ -1,7 +1,10 @@
 @import "var";
 @import "reset";
+@import "slider";
+@import "nav";
 body{
   background: $body-background;
+  color: $font-color;
 }
 #header {
   height: $header-height;
@@ -9,6 +12,7 @@ body{
   #logo{
     height: $logo-height;
     margin: 9px 0 0 10px;
-
   }
+
+
 }
