@@ -11,6 +11,11 @@ module.exports = {
         }, {
         loader: "sass-loader" // compiles Sass to CSS
         }]
+      },
+      {
+        test: /\.js$/,
+        use: ['babel-loader?cacheDirectory=true'],
+        include: path.join(__dirname,'scripts')
       }]
     }
 }

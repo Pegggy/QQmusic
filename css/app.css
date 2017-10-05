@@ -39,7 +39,8 @@ h6 {
   overflow: hidden; }
   .slider .slider-wrap {
     width: 500%;
-    display: flex; }
+    display: flex;
+    transition: .4s; }
   .slider .slider-item > a {
     display: block; }
     .slider .slider-item > a img {
