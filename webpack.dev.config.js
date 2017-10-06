@@ -1,6 +1,15 @@
 const path = require('path')
 
 module.exports = {
+  entry: path.join(__dirname,'./scripts/app.js'),
+  output: {
+    path: path.join(__dirname,'./dist'),
+    filename: '[name].js'
+  },
+  devServer:{
+    contentBase: path.join(__dirname)
+  },
+  devtool: 'source-map',
   module: {
     rules: [{
       test: /\.scss$/,
@@ -14,9 +23,16 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        exclude: /(node_modules|src)/,
+        exclude: /(node_modules)/,
         use: ['babel-loader?cacheDirectory=true'],
         include: path.join(__dirname,'scripts')
-      }]
-    }
+       }
+      // {
+      //   test: /\.json$/,
+      //   loader: 'json-loader',
+      //   exclude: /(node_modules)/,
+      //   include: path.join(__dirname,'json')
+      // }
+    ]
+  }
 }
