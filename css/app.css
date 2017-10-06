@@ -45,9 +45,9 @@ h6 {
     color: rgba(0, 0, 0, 0.6);
     width: 100%;
     position: relative; }
-    .nav a.highlight {
+    .nav a.active {
       color: #31c27c; }
-      .nav a.highlight:after {
+      .nav a.active:after {
         content: '';
         display: block;
         position: absolute;
@@ -67,3 +67,6 @@ body {
   #header #logo {
     height: 25px;
     margin: 9px 0 0 10px; }
+
+.hide {
+  display: none; }

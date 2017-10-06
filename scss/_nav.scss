@@ -2,15 +2,15 @@
 .nav{
   display: flex;
   justify-content: space-around;
-  height: 40px;
-  line-height:40px;
+  height: $nav-line-height;
+  line-height: $nav-line-height;
   background: #fff;
   text-align: center;
   a{
     color: $link-color;
     width: 100%;
     position: relative;
-    &.highlight{
+    &.active{
       color: $header-background;
       &:after{
         content: '';
