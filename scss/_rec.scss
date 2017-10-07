@@ -1,0 +1,68 @@
+
+.songs-list{
+  margin: 0 10px 7px 10px;
+  h2{
+    font-size: 16px;
+    color: #000;
+    margin-bottom: 11px;
+    font-weight: normal;
+    margin-top: 5px;
+  }
+  .radio-wrap{
+    .radio-item{
+      float: left;
+      width: 50%;
+      padding-right: 8px;
+      a{
+        background: #fff;
+        display: block;
+      }
+      .media-wrap{
+        margin-bottom: 5px;
+        position: relative;
+        &:after{
+          content: '';
+          display: block;
+          padding-top: 100%;
+        }
+        img{
+        width: 100%;
+        position: absolute;
+        }
+        .icon-play{
+          position: absolute;
+          bottom: 4px;
+          right: 4px;
+          &:after{
+            font-family: "iconfont";
+            content: '\e633';
+            font-size: $icon-height;
+            color: $icon-color;
+          }
+        }
+      }
+      .media-info{
+        padding-bottom: 10px;
+        .media-title{
+          font-size: 14px;
+          color: $font-color;
+          padding-left: 8px;
+          line-height: 18px;
+        }
+      }
+    }
+  }
+  .more-list{
+    height: $nav-line-height;
+    line-height: $nav-line-height;
+    text-align: center;
+    a{
+      color: $link-color;
+    }
+  }
+}
+.clearfix:after{
+  content: '';
+  display: block;
+  clear: both;
+}

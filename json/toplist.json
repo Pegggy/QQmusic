@@ -1,0 +1,304 @@
+{
+  "code": 0,
+  "subcode": 0,
+  "message": "",
+  "default": 0,
+  "data": {
+    "topList": [
+      {
+        "id": 4,
+        "listenCount": 19700000,
+        "picUrl": "http://y.gtimg.cn/music/common/upload/iphone_order_channel/toplist_4_300_204266578.jpg",
+        "songList": [
+          {
+            "singername": "萧敬腾",
+            "songname": "羞羞的铁拳"
+          },
+          {
+            "singername": "杨清柠",
+            "songname": "四年半"
+          },
+          {
+            "singername": "庄心妍/金润吉",
+            "songname": "一人一城"
+          }
+        ],
+        "topTitle": "广汽传祺·巅峰榜·流行指数",
+        "type": 0
+      },
+      {
+        "id": 26,
+        "listenCount": 19900000,
+        "picUrl": "http://y.gtimg.cn/music/common/upload/iphone_order_channel/toplist_26_300_204224921.jpg",
+        "songList": [
+          {
+            "singername": "华晨宇",
+            "songname": "智商二五零"
+          },
+          {
+            "singername": "校长",
+            "songname": "带你去旅行"
+          },
+          {
+            "singername": "金志文",
+            "songname": "远走高飞 (独唱版)"
+          }
+        ],
+        "topTitle": "巅峰榜·热歌",
+        "type": 0
+      },
+      {
+        "id": 27,
+        "listenCount": 16000000,
+        "picUrl": "http://y.gtimg.cn/music/common/upload/iphone_order_channel/toplist_27_300_204266578.jpg",
+        "songList": [
+          {
+            "singername": "萧敬腾",
+            "songname": "羞羞的铁拳"
+          },
+          {
+            "singername": "庄心妍/金润吉",
+            "songname": "一人一城"
+          },
+          {
+            "singername": "黑崎子",
+            "songname": "春风吹"
+          }
+        ],
+        "topTitle": "巅峰榜·新歌",
+        "type": 0
+      },
+      {
+        "id": 51,
+        "listenCount": 15532600,
+        "picUrl": "http://y.gtimg.cn/music/common/upload/iphone_order_channel/toplist_51_300_203451421.jpg",
+        "songList": [
+          {
+            "singername": "毛不易",
+            "songname": "消愁 (Live)"
+          },
+          {
+            "singername": "毛不易",
+            "songname": "像我这样的人 (Live)"
+          },
+          {
+            "singername": "毛不易",
+            "songname": "盛夏 (Live)"
+          }
+        ],
+        "topTitle": "巅峰榜·明日之子",
+        "type": 0
+      },
+      {
+        "id": 25,
+        "listenCount": 9600000,
+        "picUrl": "http://y.gtimg.cn/music/common/upload/iphone_order_channel/toplist_25_300_204286708.jpg",
+        "songList": [
+          {
+            "singername": "叶炫清",
+            "songname": "从前慢 (Live)"
+          },
+          {
+            "singername": "周杰伦",
+            "songname": "告白气球 (Live)"
+          },
+          {
+            "singername": "曹杨/陈颖恩",
+            "songname": "记得 (Live)"
+          }
+        ],
+        "topTitle": "问问音箱·巅峰榜·中国新歌声",
+        "type": 0
+      },
+      {
+        "id": 28,
+        "listenCount": 15500000,
+        "picUrl": "http://y.gtimg.cn/music/common/upload/iphone_order_channel/toplist_28_300_204211057.jpg",
+        "songList": [
+          {
+            "singername": "贱m",
+            "songname": "80000"
+          },
+          {
+            "singername": "龚治铭",
+            "songname": "80000！"
+          },
+          {
+            "singername": "北晨",
+            "songname": "春风吹"
+          }
+        ],
+        "topTitle": "巅峰榜·网络歌曲",
+        "type": 0
+      },
+      {
+        "id": 5,
+        "listenCount": 8305780,
+        "picUrl": "http://y.gtimg.cn/music/common/upload/iphone_order_channel/toplist_5_300_204241271.jpg",
+        "songList": [
+          {
+            "singername": "庄心妍/金润吉",
+            "songname": "一人一城"
+          },
+          {
+            "singername": "华晨宇",
+            "songname": "智商二五零"
+          },
+          {
+            "singername": "魏晨",
+            "songname": "星辰大海是你"
+          }
+        ],
+        "topTitle": "巅峰榜·内地",
+        "type": 0
+      },
+      {
+        "id": 6,
+        "listenCount": 4995480,
+        "picUrl": "http://y.gtimg.cn/music/common/upload/iphone_order_channel/toplist_6_300_204266578.jpg",
+        "songList": [
+          {
+            "singername": "萧敬腾",
+            "songname": "羞羞的铁拳"
+          },
+          {
+            "singername": "梁静茹",
+            "songname": "两难"
+          },
+          {
+            "singername": "狮子合唱团",
+            "songname": "我们的爱"
+          }
+        ],
+        "topTitle": "巅峰榜·港台",
+        "type": 0
+      },
+      {
+        "id": 3,
+        "listenCount": 14441830,
+        "picUrl": "http://y.gtimg.cn/music/common/upload/iphone_order_channel/toplist_3_300_203808246.jpg",
+        "songList": [
+          {
+            "singername": "Michael Jackson",
+            "songname": "Blood On The Dance Floor X Dangerous (The White Panda Mash-Up)"
+          },
+          {
+            "singername": "Taylor Swift",
+            "songname": "Look What You Made Me Do"
+          },
+          {
+            "singername": "Alan Walker",
+            "songname": "The Spectre"
+          }
+        ],
+        "topTitle": "巅峰榜·欧美",
+        "type": 0
+      },
+      {
+        "id": 16,
+        "listenCount": 8859780,
+        "picUrl": "http://y.gtimg.cn/music/common/upload/iphone_order_channel/toplist_16_300_204192843.jpg",
+        "songList": [
+          {
+            "singername": "B1A4 (비원에이포)",
+            "songname": "Rollin'"
+          },
+          {
+            "singername": "아이유 (IU)",
+            "songname": "가을 아침 (秋日早晨)"
+          },
+          {
+            "singername": "BOBBY (金知元)",
+            "songname": "I LOVE YOU (사랑해)"
+          }
+        ],
+        "topTitle": "巅峰榜·韩国",
+        "type": 0
+      },
+      {
+        "id": 17,
+        "listenCount": 1810770,
+        "picUrl": "http://y.gtimg.cn/music/common/upload/iphone_order_channel/toplist_17_300_203820499.jpg",
+        "songList": [
+          {
+            "singername": "田口淳之介",
+            "songname": "DIMENSION"
+          },
+          {
+            "singername": "LiSA (織部里沙)",
+            "songname": "Catch the Moment"
+          },
+          {
+            "singername": "宇多田ヒカル (宇多田光)",
+            "songname": "Forevermore"
+          }
+        ],
+        "topTitle": "巅峰榜·日本",
+        "type": 0
+      },
+      {
+        "id": 201,
+        "listenCount": 159952,
+        "picUrl": "http://y.gtimg.cn/music/common/upload/iphone_order_channel/20150127163830.jpg",
+        "songList": [
+          {
+            "singername": "鹿晗",
+            "songname": "心率（Like a dream）"
+          },
+          {
+            "singername": "张艺兴",
+            "songname": "需要你 (I NEED U)"
+          },
+          {
+            "singername": "Taylor Swift",
+            "songname": "Look What You Made Me Do"
+          }
+        ],
+        "topTitle": "巅峰榜·MV",
+        "type": 0
+      },
+      {
+        "id": 52,
+        "listenCount": 1910000,
+        "picUrl": "http://y.gtimg.cn/music/common/upload/iphone_order_channel/toplist_52_300_203712947.jpg",
+        "songList": [
+          {
+            "singername": "鹿先森乐队",
+            "songname": "给大家的歌"
+          },
+          {
+            "singername": "愚青",
+            "songname": "青鸟与诗"
+          },
+          {
+            "singername": "余佳运/Jony J",
+            "songname": "Almost Home"
+          }
+        ],
+        "topTitle": "巅峰榜·腾讯音乐人原创榜",
+        "type": 0
+      },
+      {
+        "id": 36,
+        "listenCount": 4161380,
+        "picUrl": "http://y.gtimg.cn/music/common/upload/iphone_order_channel/toplist_36_300_200525765.jpg",
+        "songList": [
+          {
+            "singername": "苏悦宁",
+            "songname": "红色高跟鞋"
+          },
+          {
+            "singername": "陈诗思",
+            "songname": "我好想你"
+          },
+          {
+            "singername": "左慧晨",
+            "songname": "天空之城"
+          }
+        ],
+        "topTitle": "巅峰榜·K歌金曲",
+        "type": 0
+      }
+    ]
+  }
+}

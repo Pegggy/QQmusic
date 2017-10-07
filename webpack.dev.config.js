@@ -26,7 +26,16 @@ module.exports = {
         exclude: /(node_modules)/,
         use: ['babel-loader?cacheDirectory=true'],
         include: path.join(__dirname,'scripts')
-       }
+       },
+      {
+        test: /\.(woff|svg|ttf|eot)$/i,
+        loader:'url-loader',
+        options:{
+          /*图片名称*/
+          name:"fonts/[name].[ext]"
+          /*位置*/
+        }
+      }
       // {
       //   test: /\.json$/,
       //   loader: 'json-loader',

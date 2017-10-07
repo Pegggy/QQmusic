@@ -57,9 +57,100 @@ h6 {
         width: 100%;
         background: #31c27c; }
 
+@font-face {
+  font-family: 'iconfont';
+  src: url("../fonts/iconfont.eot");
+  src: url("../fonts/iconfont.eot?#iefix") format("embedded-opentype"), url("../fonts/iconfont.woff") format("woff"), url("../fonts/iconfont.ttf") format("truetype"), url("../fonts/iconfont.svg#iconfont") format("svg"); }
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale; }
+
+.songs-list {
+  margin: 0 10px 7px 10px; }
+  .songs-list h2 {
+    font-size: 16px;
+    color: #000;
+    margin-bottom: 11px;
+    font-weight: normal;
+    margin-top: 5px; }
+  .songs-list .radio-wrap .radio-item {
+    float: left;
+    width: 50%;
+    padding-right: 8px; }
+    .songs-list .radio-wrap .radio-item a {
+      background: #fff;
+      display: block; }
+    .songs-list .radio-wrap .radio-item .media-wrap {
+      margin-bottom: 5px;
+      position: relative; }
+      .songs-list .radio-wrap .radio-item .media-wrap:after {
+        content: '';
+        display: block;
+        padding-top: 100%; }
+      .songs-list .radio-wrap .radio-item .media-wrap img {
+        width: 100%;
+        position: absolute; }
+      .songs-list .radio-wrap .radio-item .media-wrap .icon-play {
+        position: absolute;
+        bottom: 4px;
+        right: 4px; }
+        .songs-list .radio-wrap .radio-item .media-wrap .icon-play:after {
+          font-family: "iconfont";
+          content: '\e633';
+          font-size: 24px;
+          color: rgba(255, 255, 255, 0.75); }
+    .songs-list .radio-wrap .radio-item .media-info {
+      padding-bottom: 10px; }
+      .songs-list .radio-wrap .radio-item .media-info .media-title {
+        font-size: 14px;
+        color: #000;
+        padding-left: 8px;
+        line-height: 18px; }
+  .songs-list .more-list {
+    height: 40px;
+    line-height: 40px;
+    text-align: center; }
+    .songs-list .more-list a {
+      color: rgba(0, 0, 0, 0.6); }
+
+.clearfix:after {
+  content: '';
+  display: block;
+  clear: both; }
+
+.footer .web-vision {
+  text-align: center; }
+  .footer .web-vision a {
+    position: relative;
+    font-size: 14px;
+    height: 14px;
+    line-height: 14px;
+    color: #000; }
+
+.footer .footer-logo {
+  height: 25px;
+  display: block;
+  width: 82px;
+  margin: 10px auto;
+  background-image: url("../imgs/logo_footer.png");
+  background-repeat: no-repeat;
+  background-size: contain; }
+
+.footer .copyright {
+  text-align: center;
+  margin-bottom: 10px; }
+  .footer .copyright p, .footer .copyright .e-link {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 10px; }
+
 body {
   background: #f4f4f4;
-  color: #555; }
+  color: #000; }
 
 #header {
   height: 44px;
