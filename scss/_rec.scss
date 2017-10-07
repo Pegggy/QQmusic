@@ -52,13 +52,13 @@
       }
     }
   }
-  .more-list{
-    height: $nav-line-height;
-    line-height: $nav-line-height;
-    text-align: center;
-    a{
-      color: $link-color;
-    }
+}
+.more-list{
+  height: $nav-line-height;
+  line-height: $nav-line-height;
+  text-align: center;
+  a{
+    color: $link-color;
   }
 }
 .clearfix:after{

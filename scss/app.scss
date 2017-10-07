@@ -5,9 +5,10 @@
 @import "rec";
 @import "footer";
 @import "rank";
+@import "search";
 body{
-  background: $body-background;
   color: $font-color;
+  background: #fff;
 }
 #header {
   height: $header-height;
@@ -16,6 +17,9 @@ body{
     height: $logo-height;
     margin: 9px 0 0 10px;
   }
+}
+.content-wrap{
+  background: $body-background;
 }
 .hide{
   display: none;

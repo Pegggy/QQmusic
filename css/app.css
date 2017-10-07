@@ -111,12 +111,13 @@ h6 {
         color: #000;
         padding-left: 8px;
         line-height: 18px; }
-  .songs-list .more-list {
-    height: 40px;
-    line-height: 40px;
-    text-align: center; }
-    .songs-list .more-list a {
-      color: rgba(0, 0, 0, 0.6); }
+
+.more-list {
+  height: 40px;
+  line-height: 40px;
+  text-align: center; }
+  .more-list a {
+    color: rgba(0, 0, 0, 0.6); }
 
 .clearfix:after {
   content: '';
@@ -149,7 +150,8 @@ h6 {
     font-size: 10px; }
 
 .rank-tab {
-  margin: 10px; }
+  margin: 0 10px 10px;
+  padding-top: 10px; }
   .rank-tab .rank-item {
     margin-bottom: 10px; }
     .rank-tab .rank-item .item-wrap {
@@ -205,9 +207,68 @@ h6 {
         border-right: 1px solid #b2b2b2;
         border-bottom: 1px solid #b2b2b2; }
 
-body {
+.search-bar {
   background: #f4f4f4;
-  color: #000; }
+  padding: 10px;
+  display: flex; }
+  .search-bar .search-wrap {
+    position: relative;
+    flex-grow: 1;
+    background: #fff;
+    border-radius: 3px;
+    padding: 8px 12px 8px 30px; }
+  .search-bar .search-input {
+    width: 100%;
+    height: 20px;
+    line-height: 20px;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.3);
+    outline: none; }
+    .search-bar .search-input::-webkit-input-placeholder {
+      font-size: 14px;
+      color: rgba(0, 0, 0, 0.3); }
+    .search-bar .search-input::-moz-placeholder {
+      font-size: 14px;
+      color: rgba(0, 0, 0, 0.3); }
+  .search-bar .icon-search {
+    position: absolute;
+    left: 6px;
+    top: 9px; }
+    .search-bar .icon-search:after {
+      font-family: 'iconfont';
+      content: '\e738';
+      display: block;
+      font-size: 18px;
+      color: #b2b2b2; }
+
+.hot-search {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 14px;
+  padding: 10px;
+  background: #fff; }
+  .hot-search h3 {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 10px; }
+  .hot-search .hot-tags {
+    display: flex;
+    flex-wrap: wrap; }
+  .hot-search .tags {
+    padding: 0 10px;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid rgba(0, 0, 0, 0.6);
+    border-radius: 99px;
+    margin-right: 14px;
+    margin-bottom: 10px;
+    color: #000; }
+    .hot-search .tags.hot-key {
+      color: #fc4524;
+      border-color: #fc4524; }
+
+body {
+  color: #000;
+  background: #fff; }
 
 #header {
   height: 44px;
@@ -215,6 +276,9 @@ body {
   #header #logo {
     height: 25px;
     margin: 9px 0 0 10px; }
+
+.content-wrap {
+  background: #f4f4f4; }
 
 .hide {
   display: none; }
