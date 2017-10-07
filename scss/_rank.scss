@@ -1,0 +1,69 @@
+.rank-tab{
+  margin: 10px;
+  .rank-item{
+    margin-bottom: 10px;
+    .item-wrap{
+      background: #fff;
+      display: flex;
+      position: relative;
+    }
+    .rank-media{
+        width: $rank-img-width;
+        height: $rank-img-width;
+        position: relative;
+        display: block;
+        img{
+          width: $rank-img-width;
+          display: block;
+        }
+      .rank-count{
+        position: absolute;
+        white-space:nowrap;
+        bottom: 4px;
+        left: 20px;
+        color: #fff;
+        font-size: 10px;
+      }
+      .icon-1{
+        position: absolute;
+        left: 4px;
+        bottom: 4px;
+        &:after{
+          font-family: 'iconfont';
+          display: block;
+          content: '\e681';
+          font-size: 10px;
+          color: #fff;
+        }
+      }
+    }
+    .rank-list{
+      margin: 6px 10px 6px 15px;
+      font-size: 14px;
+      color: rgba(0,0,0,.5);
+      span{
+        margin: 0 4px;
+        color: #000;
+      }
+    }
+    .rank-list-title{
+      font-size: 16px;
+      color: #000;
+      margin-bottom: 5px;
+    }
+    .rightt-arrow{
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      &:after{
+        display: block;
+        content: '';
+        width: 6px;
+        height: 6px;
+        transform: rotate(-45deg);
+        border-right: 1px solid $arrow-color;
+        border-bottom: 1px solid $arrow-color;
+      }
+    }
+  }
+}

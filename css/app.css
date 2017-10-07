@@ -148,6 +148,63 @@ h6 {
     color: rgba(0, 0, 0, 0.6);
     font-size: 10px; }
 
+.rank-tab {
+  margin: 10px; }
+  .rank-tab .rank-item {
+    margin-bottom: 10px; }
+    .rank-tab .rank-item .item-wrap {
+      background: #fff;
+      display: flex;
+      position: relative; }
+    .rank-tab .rank-item .rank-media {
+      width: 100px;
+      height: 100px;
+      position: relative;
+      display: block; }
+      .rank-tab .rank-item .rank-media img {
+        width: 100px;
+        display: block; }
+      .rank-tab .rank-item .rank-media .rank-count {
+        position: absolute;
+        white-space: nowrap;
+        bottom: 4px;
+        left: 20px;
+        color: #fff;
+        font-size: 10px; }
+      .rank-tab .rank-item .rank-media .icon-1 {
+        position: absolute;
+        left: 4px;
+        bottom: 4px; }
+        .rank-tab .rank-item .rank-media .icon-1:after {
+          font-family: 'iconfont';
+          display: block;
+          content: '\e681';
+          font-size: 10px;
+          color: #fff; }
+    .rank-tab .rank-item .rank-list {
+      margin: 6px 10px 6px 15px;
+      font-size: 14px;
+      color: rgba(0, 0, 0, 0.5); }
+      .rank-tab .rank-item .rank-list span {
+        margin: 0 4px;
+        color: #000; }
+    .rank-tab .rank-item .rank-list-title {
+      font-size: 16px;
+      color: #000;
+      margin-bottom: 5px; }
+    .rank-tab .rank-item .rightt-arrow {
+      position: absolute;
+      right: 10px;
+      top: 50%; }
+      .rank-tab .rank-item .rightt-arrow:after {
+        display: block;
+        content: '';
+        width: 6px;
+        height: 6px;
+        transform: rotate(-45deg);
+        border-right: 1px solid #b2b2b2;
+        border-bottom: 1px solid #b2b2b2; }
+
 body {
   background: #f4f4f4;
   color: #000; }
