@@ -78,35 +78,35 @@ h6 {
     margin-bottom: 11px;
     font-weight: normal;
     margin-top: 5px; }
-  .songs-list .radio-wrap .radio-item {
+  .songs-list .radio-item {
     float: left;
     width: 50%;
     padding-right: 8px; }
-    .songs-list .radio-wrap .radio-item a {
+    .songs-list .radio-item a {
       background: #fff;
       display: block; }
-    .songs-list .radio-wrap .radio-item .media-wrap {
+    .songs-list .radio-item .media-wrap {
       margin-bottom: 5px;
       position: relative; }
-      .songs-list .radio-wrap .radio-item .media-wrap:after {
+      .songs-list .radio-item .media-wrap:after {
         content: '';
         display: block;
         padding-top: 100%; }
-      .songs-list .radio-wrap .radio-item .media-wrap img {
+      .songs-list .radio-item .media-wrap img {
         width: 100%;
         position: absolute; }
-      .songs-list .radio-wrap .radio-item .media-wrap .icon-play {
+      .songs-list .radio-item .media-wrap .icon-play {
         position: absolute;
         bottom: 4px;
         right: 4px; }
-        .songs-list .radio-wrap .radio-item .media-wrap .icon-play:after {
+        .songs-list .radio-item .media-wrap .icon-play:after {
           font-family: "iconfont";
           content: '\e633';
           font-size: 24px;
           color: rgba(255, 255, 255, 0.75); }
-    .songs-list .radio-wrap .radio-item .media-info {
+    .songs-list .radio-item .media-info {
       padding-bottom: 10px; }
-      .songs-list .radio-wrap .radio-item .media-info .media-title {
+      .songs-list .radio-item .media-info .media-title {
         font-size: 14px;
         color: #000;
         padding-left: 8px;
@@ -157,7 +157,9 @@ h6 {
     .rank-tab .rank-item .item-wrap {
       background: #fff;
       display: flex;
-      position: relative; }
+      position: relative;
+      padding-left: 5px;
+      overflow: hidden; }
     .rank-tab .rank-item .rank-media {
       width: 100px;
       height: 100px;
@@ -186,9 +188,13 @@ h6 {
     .rank-tab .rank-item .rank-list {
       margin: 6px 10px 6px 15px;
       font-size: 14px;
-      color: rgba(0, 0, 0, 0.5); }
+      color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      flex-direction: column; }
+      .rank-tab .rank-item .rank-list p {
+        max-width: 220px; }
       .rank-tab .rank-item .rank-list span {
-        margin: 0 4px;
+        margin: 0 5px;
         color: #000; }
     .rank-tab .rank-item .rank-list-title {
       font-size: 16px;
@@ -206,6 +212,11 @@ h6 {
         transform: rotate(-45deg);
         border-right: 1px solid #b2b2b2;
         border-bottom: 1px solid #b2b2b2; }
+
+.text-hide {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis; }
 
 .search-bar {
   background: #f4f4f4;

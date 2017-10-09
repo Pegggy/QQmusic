@@ -1,4 +1,6 @@
 import './tab.js'
+import './lazyload.js'
+
 fetch('/json/rec.json')
   .then(res => res.json())
   .then(render);
@@ -9,17 +11,13 @@ function render(json){
 }
 
 function renderslider(slides){
-  slides =  slides.map(slide =>({
-    link: slide.linkUrl,
-    img: slide.picUrl
-    }))
   let $swiper = document.querySelector('.swiper-container');
   $swiper.innerHTML = ' <div class="swiper-wrapper"></div><div class="swiper-pagination" id="swiper-pagination"></div>';
   let $swiperWrapper = $swiper.querySelector('.swiper-wrapper');
     $swiperWrapper.innerHTML = slides.map(slide =>
     `<div class="swiper-slide">
-        <a href="${slide.link}" >
-        <img src="${slide.img}" style="width: 100%;height: 100%;">
+        <a href="${slide.linkUrl}" >
+        <img src="${slide.picUrl}" style="width: 100%;height: 100%;">
         </a>
       </div>`
   ).join('');
@@ -34,10 +32,6 @@ function renderslider(slides){
 }
 
 function renderRadioList(radioList){
-  radioList = radioList.map(item => ({
-      picUrl: item.picUrl,
-      title: item.Ftitle
-  }))
   let recTab = document.querySelector('.rec-tab');
   let songsListRadio = document.createElement('div');
   songsListRadio.classList.add('songs-list');
@@ -52,7 +46,7 @@ function renderRadioList(radioList){
             <i class="iconfont icon-play"></i>
           </div>
           <div class="media-info">
-            <h3 class="media-title">${item.title}</h3>
+            <h3 class="media-title">${item.Ftitle}</h3>
           </div>
         </a>
     </li>`).join('');
@@ -66,7 +60,7 @@ function renderRadioList(radioList){
   footer.classList.add('footer');
   footer.innerHTML = 
   `<div class="web-vision">
-      <a href="http://y.qq.com/?ADTAG=myqq&nomobile=1#type=index">查看电脑版网页</a>
+    <a href="http://y.qq.com/?ADTAG=myqq&nomobile=1#type=index">查看电脑版网页</a>
   </div>
   <div class="footer-logo"></div>
   <div class="copyright">
@@ -76,9 +70,46 @@ function renderRadioList(radioList){
   recTab.appendChild(footer);
 }
 
+fetch('/json/toplist.json')
+  .then(res => res.json())
+  .then(renderRank)
 
-
-
+function renderRank(json){
+  let topList = json.data.topList;
+  let rankTab = document.querySelector('.rank-tab');
+  let rankList = document.createElement('ul');
+  rankList.innerHTML = topList.map( item => 
+  `<li class="rank-item">
+    <div class="item-wrap">
+      <a href="javascript:;" class="rank-media">
+        <img data-src=${item.picUrl} class="lazyload">
+        <i class="iconfont icon-1"></i>
+        <span class="rank-count">${rankCount(item.listenCount)}万</span>
+      </a>
+      <div class="rank-list">
+        <h3 class="rank-list-title text-hide">${item.topTitle}</h3>
+        ${rankItem(item.songList)}
+      </div>
+      <span class="rightt-arrow"></span>
+    </div>
+  </li>`).join('');
+  rankTab.appendChild(rankList);
+  let moreMusic = document.createElement('div');
+  moreMusic.innerHTML = ' <a href="#">去客户端发现更多好音乐 ></a>';
+  moreMusic.classList.add('more-list');
+  rankTab.appendChild(moreMusic);
+  lazyload();
+}
+function rankCount(num){
+  num = num / 10000;
+  return num.toFixed(1);
+}
+function rankItem(songList){
+  songList = songList.map((song,index) => `
+  <p class="text-hide">${(index+1)}<span>${song.songname}</span>${song.singername}</p>
+  `).join('');
+  return songList;
+}
 
 
  

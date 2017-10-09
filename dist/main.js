@@ -72,6 +72,8 @@
 
 __webpack_require__(1);
 
+__webpack_require__(2);
+
 fetch('/json/rec.json').then(function (res) {
   return res.json();
 }).then(render);
@@ -82,17 +84,11 @@ function render(json) {
 }
 
 function renderslider(slides) {
-  slides = slides.map(function (slide) {
-    return {
-      link: slide.linkUrl,
-      img: slide.picUrl
-    };
-  });
   var $swiper = document.querySelector('.swiper-container');
   $swiper.innerHTML = ' <div class="swiper-wrapper"></div><div class="swiper-pagination" id="swiper-pagination"></div>';
   var $swiperWrapper = $swiper.querySelector('.swiper-wrapper');
   $swiperWrapper.innerHTML = slides.map(function (slide) {
-    return '<div class="swiper-slide">\n        <a href="' + slide.link + '" >\n        <img src="' + slide.img + '" style="width: 100%;height: 100%;">\n        </a>\n      </div>';
+    return '<div class="swiper-slide">\n        <a href="' + slide.linkUrl + '" >\n        <img src="' + slide.picUrl + '" style="width: 100%;height: 100%;">\n        </a>\n      </div>';
   }).join('');
   var mySwiper = new Swiper('.swiper-container', {
     direction: 'horizontal',
@@ -105,12 +101,6 @@ function renderslider(slides) {
 }
 
 function renderRadioList(radioList) {
-  radioList = radioList.map(function (item) {
-    return {
-      picUrl: item.picUrl,
-      title: item.Ftitle
-    };
-  });
   var recTab = document.querySelector('.rec-tab');
   var songsListRadio = document.createElement('div');
   songsListRadio.classList.add('songs-list');
@@ -118,7 +108,7 @@ function renderRadioList(radioList) {
   songsListRadio.innerHTML = '<h2>电台</h2><ul class="radio-wrap clearfix"></ul>';
   var radioWrap = songsListRadio.querySelector('.radio-wrap');
   radioWrap.innerHTML = radioList.map(function (item) {
-    return '<li class="radio-item">\n        <a href="javascript:;">\n          <div class="media-wrap">\n            <img src=' + item.picUrl + ' alt="">\n            <i class="iconfont icon-play"></i>\n          </div>\n          <div class="media-info">\n            <h3 class="media-title">' + item.title + '</h3>\n          </div>\n        </a>\n    </li>';
+    return '<li class="radio-item">\n        <a href="javascript:;">\n          <div class="media-wrap">\n            <img src=' + item.picUrl + ' alt="">\n            <i class="iconfont icon-play"></i>\n          </div>\n          <div class="media-info">\n            <h3 class="media-title">' + item.Ftitle + '</h3>\n          </div>\n        </a>\n    </li>';
   }).join('');
   var songsListHot = document.createElement('div');
   songsListHot.classList.add('songs-list');
@@ -128,8 +118,37 @@ function renderRadioList(radioList) {
   recTab.appendChild(songsListHot);
   var footer = document.createElement('div');
   footer.classList.add('footer');
-  footer.innerHTML = '<div class="web-vision">\n      <a href="http://y.qq.com/?ADTAG=myqq&nomobile=1#type=index">\u67E5\u770B\u7535\u8111\u7248\u7F51\u9875</a>\n  </div>\n  <div class="footer-logo"></div>\n  <div class="copyright">\n    <p>Copyright \xA9 1998 - 2017 PenFan. All Rights Reserved.</p>\n    <a href="mailto:fangpei9212@163.com" class="e-link">\u8054\u7CFB\u90AE\u7BB1: fangpei9212@163.com</a>\n  </div>';
+  footer.innerHTML = '<div class="web-vision">\n    <a href="http://y.qq.com/?ADTAG=myqq&nomobile=1#type=index">\u67E5\u770B\u7535\u8111\u7248\u7F51\u9875</a>\n  </div>\n  <div class="footer-logo"></div>\n  <div class="copyright">\n    <p>Copyright \xA9 1998 - 2017 PenFan. All Rights Reserved.</p>\n    <a href="mailto:fangpei9212@163.com" class="e-link">\u8054\u7CFB\u90AE\u7BB1: fangpei9212@163.com</a>\n  </div>';
   recTab.appendChild(footer);
+}
+
+fetch('/json/toplist.json').then(function (res) {
+  return res.json();
+}).then(renderRank);
+
+function renderRank(json) {
+  var topList = json.data.topList;
+  var rankTab = document.querySelector('.rank-tab');
+  var rankList = document.createElement('ul');
+  rankList.innerHTML = topList.map(function (item) {
+    return '<li class="rank-item">\n    <div class="item-wrap">\n      <a href="javascript:;" class="rank-media">\n        <img data-src=' + item.picUrl + ' class="lazyload">\n        <i class="iconfont icon-1"></i>\n        <span class="rank-count">' + rankCount(item.listenCount) + '\u4E07</span>\n      </a>\n      <div class="rank-list">\n        <h3 class="rank-list-title text-hide">' + item.topTitle + '</h3>\n        ' + rankItem(item.songList) + '\n      </div>\n      <span class="rightt-arrow"></span>\n    </div>\n  </li>';
+  }).join('');
+  rankTab.appendChild(rankList);
+  var moreMusic = document.createElement('div');
+  moreMusic.innerHTML = ' <a href="#">去客户端发现更多好音乐 ></a>';
+  moreMusic.classList.add('more-list');
+  rankTab.appendChild(moreMusic);
+  lazyload();
+}
+function rankCount(num) {
+  num = num / 10000;
+  return num.toFixed(1);
+}
+function rankItem(songList) {
+  songList = songList.map(function (song, index) {
+    return '\n  <p class="text-hide">' + (index + 1) + '<span>' + song.songname + '</span>' + song.singername + '</p>\n  ';
+  }).join('');
+  return songList;
 }
 
 /***/ }),
@@ -156,6 +175,95 @@ function renderRadioList(radioList) {
     }
   });
 })();
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(global) {var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+/*! Lazy Load 2.0.0-beta.2 - MIT license - Copyright 2007-2017 Mika Tuupola */
+!function (t, e) {
+  "object" == ( false ? "undefined" : _typeof(exports)) ? module.exports = e(t) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_FACTORY__ = (e(t)),
+				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
+				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : t.LazyLoad = e(t);
+}("undefined" != typeof global ? global : undefined.window || undefined.global, function (t) {
+  "use strict";
+  function e(t, e) {
+    this.settings = r(s, e || {}), this.images = t || document.querySelectorAll(this.settings.selector), this.observer = null, this.init();
+  }var s = { src: "data-src", srcset: "data-srcset", selector: ".lazyload" },
+      r = function r() {
+    var t = {},
+        e = !1,
+        s = 0,
+        o = arguments.length;"[object Boolean]" === Object.prototype.toString.call(arguments[0]) && (e = arguments[0], s++);for (; s < o; s++) {
+      !function (s) {
+        for (var _o in s) {
+          Object.prototype.hasOwnProperty.call(s, _o) && (e && "[object Object]" === Object.prototype.toString.call(s[_o]) ? t[_o] = r(!0, t[_o], s[_o]) : t[_o] = s[_o]);
+        }
+      }(arguments[s]);
+    }return t;
+  };if (e.prototype = { init: function init() {
+      if (!t.IntersectionObserver) return void this.loadImages();var e = this,
+          s = { root: null, rootMargin: "0px", threshold: [0] };this.observer = new IntersectionObserver(function (t) {
+        t.forEach(function (t) {
+          if (t.intersectionRatio > 0) {
+            e.observer.unobserve(t.target);var _s = t.target.getAttribute(e.settings.src),
+                _r = t.target.getAttribute(e.settings.srcset);"img" === t.target.tagName.toLowerCase() ? (_s && (t.target.src = _s), _r && (t.target.srcset = _r)) : t.target.style.backgroundImage = "url(" + _s + ")";
+          }
+        });
+      }, s), this.images.forEach(function (t) {
+        e.observer.observe(t);
+      });
+    }, loadAndDestroy: function loadAndDestroy() {
+      this.settings && (this.loadImages(), this.destroy());
+    }, loadImages: function loadImages() {
+      if (!this.settings) return;var t = this;this.images.forEach(function (e) {
+        var s = e.getAttribute(t.settings.src),
+            r = e.getAttribute(t.settings.srcset);"img" === e.tagName.toLowerCase() ? (s && (e.src = s), r && (e.srcset = r)) : e.style.backgroundImage = "url(" + s + ")";
+      });
+    }, destroy: function destroy() {
+      this.settings && (this.observer.disconnect(), this.settings = null);
+    } }, t.lazyload = function (t, s) {
+    return new e(t, s);
+  }, t.jQuery) {
+    var _s2 = t.jQuery;_s2.fn.lazyload = function (t) {
+      return t = t || {}, t.attribute = t.attribute || "data-src", new e(_s2.makeArray(this), t), this;
+    };
+  }return e;
+});
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || Function("return this")() || (1,eval)("this");
+} catch(e) {
+	// This works if the window reference is available
+	if(typeof window === "object")
+		g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
 
 /***/ })
 /******/ ]);
