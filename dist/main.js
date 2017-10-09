@@ -77,7 +77,12 @@ fetch('/json/rec.json').then(function (res) {
 }).then(render);
 
 function render(json) {
-  var slides = json.data.slider.map(function (slide) {
+  renderslider(json.data.slider);
+  renderRadioList(json.data.radioList);
+}
+
+function renderslider(slides) {
+  slides = slides.map(function (slide) {
     return {
       link: slide.linkUrl,
       img: slide.picUrl
@@ -97,6 +102,34 @@ function render(json) {
     loop: true,
     setWrapperSize: true
   });
+}
+
+function renderRadioList(radioList) {
+  radioList = radioList.map(function (item) {
+    return {
+      picUrl: item.picUrl,
+      title: item.Ftitle
+    };
+  });
+  var recTab = document.querySelector('.rec-tab');
+  var songsListRadio = document.createElement('div');
+  songsListRadio.classList.add('songs-list');
+  songsListRadio.classList.add('radio');
+  songsListRadio.innerHTML = '<h2>电台</h2><ul class="radio-wrap clearfix"></ul>';
+  var radioWrap = songsListRadio.querySelector('.radio-wrap');
+  radioWrap.innerHTML = radioList.map(function (item) {
+    return '<li class="radio-item">\n        <a href="javascript:;">\n          <div class="media-wrap">\n            <img src=' + item.picUrl + ' alt="">\n            <i class="iconfont icon-play"></i>\n          </div>\n          <div class="media-info">\n            <h3 class="media-title">' + item.title + '</h3>\n          </div>\n        </a>\n    </li>';
+  }).join('');
+  var songsListHot = document.createElement('div');
+  songsListHot.classList.add('songs-list');
+  songsListHot.classList.add('hot-lists');
+  songsListHot.innerHTML = '<h2>热门歌单</h2><div class="more-list"><a href="#">去客户端发现更多好音乐 ></a></div>';
+  recTab.appendChild(songsListRadio);
+  recTab.appendChild(songsListHot);
+  var footer = document.createElement('div');
+  footer.classList.add('footer');
+  footer.innerHTML = '<div class="web-vision">\n      <a href="http://y.qq.com/?ADTAG=myqq&nomobile=1#type=index">\u67E5\u770B\u7535\u8111\u7248\u7F51\u9875</a>\n  </div>\n  <div class="footer-logo"></div>\n  <div class="copyright">\n    <p>Copyright \xA9 1998 - 2017 PenFan. All Rights Reserved.</p>\n    <a href="mailto:fangpei9212@163.com" class="e-link">\u8054\u7CFB\u90AE\u7BB1: fangpei9212@163.com</a>\n  </div>';
+  recTab.appendChild(footer);
 }
 
 /***/ }),
