@@ -1,21 +1,35 @@
-const express = require('express')
-const request = require('request-promise')
-
+const express = require('express');
+const request = require('request-promise');
+const cors = require('cors');
+const PORT = process.env.PORT || 4000;
 const HEADERS = {
   'origin': 'https://m.y.qq.com',
   'user-agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1',
   'referer': 'https://m.y.qq.com/',
   'authority': 'szc.y.qq.com',
   'accept': 'application/json'
-}
-const app = express()
+};
+const app = express();
 // 首页
+app.use(cors());
 app.get('/',async (req,res)=>{
   const url = `https://c.y.qq.com/musichall/fcgi-bin/fcg_yqqhomepagerecommend.fcg?g_tk=5381&uin=0&format=json&inCharset=utf-8&outCharset=utf-8&notice=0&platform=h5&needNewCode=1&_=${+new Date()}`
   try{
     res.json( await request({
       uri: url,
       json: true,
+      headers: HEADERS
+    }))
+  }catch(e){
+    res.json({error: e.message})
+  }
+})
+app.get('/toplist',async(req,res) => {
+  const url = `https://c.y.qq.com/v8/fcg-bin/fcg_myqq_toplist.fcg?g_tk=5381&uin=0&format=json&inCharset=utf-8&outCharset=utf-8&notice=0&platform=h5&needNewCode=1&_=${+new Date()}`
+  try{
+    res.json(await request({
+      uri: url,
+      json:true,
       headers: HEADERS
     }))
   }catch(e){
@@ -36,6 +50,7 @@ app.get('/search',async(req,res) => {
     res.json({error: e.message})
   }
 })
-app.listen(9000)
-console.log('进入 localhost:9000 ~ 查看数据')
+
+app.listen(PORT)
+console.log('进入 localhost:4000 ~ 查看数据')
 

@@ -1,10 +1,13 @@
 import './tab.js'
 import './lazyload.js'
 
-fetch('/json/rec.json')
+fetch('http://localhost:4000/')
   .then(res => res.json())
   .then(render);
 
+fetch('http://localhost:4000/toplist')
+  .then(res => res.json())
+  .then(renderRank)
 function render(json){
   renderslider(json.data.slider);
   renderRadioList(json.data.radioList);
@@ -70,9 +73,7 @@ function renderRadioList(radioList){
   recTab.appendChild(footer);
 }
 
-fetch('/json/toplist.json')
-  .then(res => res.json())
-  .then(renderRank)
+
 
 function renderRank(json){
   let topList = json.data.topList;

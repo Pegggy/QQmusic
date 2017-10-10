@@ -74,10 +74,13 @@ __webpack_require__(1);
 
 __webpack_require__(2);
 
-fetch('/json/rec.json').then(function (res) {
+fetch('http://localhost:4000/').then(function (res) {
   return res.json();
 }).then(render);
 
+fetch('http://localhost:4000/toplist').then(function (res) {
+  return res.json();
+}).then(renderRank);
 function render(json) {
   renderslider(json.data.slider);
   renderRadioList(json.data.radioList);
@@ -121,10 +124,6 @@ function renderRadioList(radioList) {
   footer.innerHTML = '<div class="web-vision">\n    <a href="http://y.qq.com/?ADTAG=myqq&nomobile=1#type=index">\u67E5\u770B\u7535\u8111\u7248\u7F51\u9875</a>\n  </div>\n  <div class="footer-logo"></div>\n  <div class="copyright">\n    <p>Copyright \xA9 1998 - 2017 PenFan. All Rights Reserved.</p>\n    <a href="mailto:fangpei9212@163.com" class="e-link">\u8054\u7CFB\u90AE\u7BB1: fangpei9212@163.com</a>\n  </div>';
   recTab.appendChild(footer);
 }
-
-fetch('/json/toplist.json').then(function (res) {
-  return res.json();
-}).then(renderRank);
 
 function renderRank(json) {
   var topList = json.data.topList;
