@@ -1,11 +1,11 @@
 import './tab.js'
 import './lazyload.js'
 
-fetch('http://localhost:4000/')
+fetch('/json/rec.json')
   .then(res => res.json())
   .then(render);
 
-fetch('http://localhost:4000/toplist')
+fetch('/json/toplist.json')
   .then(res => res.json())
   .then(renderRank)
 function render(json){

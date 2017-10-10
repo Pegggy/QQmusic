@@ -74,11 +74,11 @@ __webpack_require__(1);
 
 __webpack_require__(2);
 
-fetch('http://localhost:4000/').then(function (res) {
+fetch('/json/rec.json').then(function (res) {
   return res.json();
 }).then(render);
 
-fetch('http://localhost:4000/toplist').then(function (res) {
+fetch('/json/toplist.json').then(function (res) {
   return res.json();
 }).then(renderRank);
 function render(json) {

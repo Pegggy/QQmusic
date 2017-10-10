@@ -213,11 +213,6 @@ h6 {
         border-right: 1px solid #b2b2b2;
         border-bottom: 1px solid #b2b2b2; }
 
-.text-hide {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis; }
-
 .search-bar {
   background: #f4f4f4;
   padding: 10px;
@@ -251,6 +246,48 @@ h6 {
       display: block;
       font-size: 18px;
       color: #b2b2b2; }
+
+.search-content {
+  position: relative;
+  background: #fff; }
+  .search-content li {
+    padding: 5px 0;
+    border-top: 1px solid #e5e5e5; }
+
+.singer-info > span {
+  float: left;
+  margin-left: 8px;
+  margin-top: 5px;
+  width: 40px;
+  height: 40px; }
+
+.singer-info img {
+  display: block;
+  width: 100%;
+  border-radius: 50%; }
+
+.result-title {
+  font-size: 16px;
+  line-height: 18px;
+  margin: 10px 0 0 55px; }
+
+.result-content {
+  color: #808080;
+  margin-left: 55px; }
+  .result-content > span {
+    margin-right: 10px;
+    font-size: 12px; }
+
+.song .icon-music {
+  float: left;
+  margin-left: 8px;
+  margin-top: 10px; }
+  .song .icon-music:after {
+    font-family: 'iconfont';
+    content: '\e612';
+    display: block;
+    font-size: 35px;
+    color: #b2b2b2; }
 
 .hot-search {
   color: rgba(0, 0, 0, 0.6);
@@ -293,3 +330,13 @@ body {
 
 .hide {
   display: none; }
+
+.clearfix {
+  content: '';
+  display: block;
+  clear: both; }
+
+.text-hide {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis; }

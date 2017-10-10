@@ -42,6 +42,55 @@
     
   }
 }
+.search-content{
+  position: relative;
+  background: #fff;
+  li{
+    padding: 5px 0;
+    border-top: 1px solid #e5e5e5;
+  }
+}
+.singer-info{
+  > span{
+    float: left;
+    margin-left: 8px;
+    margin-top: 5px;
+    width: 40px;
+    height: 40px;
+  }
+  img{
+    display: block;
+    width: 100%;
+    border-radius: 50%;
+  }
+}
+.result-title{
+  font-size: 16px;
+  line-height: 18px;
+  margin: 10px 0 0 55px;
+}
+.result-content{
+  color: $result-content-color;
+  margin-left: 55px;
+  > span{
+    margin-right: 10px;
+    font-size: 12px;
+  }
+}
+.song {
+  .icon-music{
+    float: left;
+    margin-left: 8px;
+    margin-top: 10px;
+    &:after{
+      font-family: 'iconfont';
+      content: '\e612';
+      display: block;
+      font-size: 35px;
+      color: #b2b2b2;
+    }
+  }
+}
 .hot-search{
   color: $link-color;
   font-size: 14px;

@@ -24,3 +24,13 @@ body{
 .hide{
   display: none;
 }
+.clearfix{
+  content: '';
+  display: block;
+  clear: both;
+}
+.text-hide{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
