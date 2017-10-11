@@ -1,4 +1,5 @@
-const path = require('path')
+const path = require('path'),
+      HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   entry: path.join(__dirname,'./scripts/app.js'),
@@ -11,15 +12,10 @@ module.exports = {
   },
   devtool: 'source-map',
   module: {
-    rules: [{
+    rules: [
+      {
       test: /\.scss$/,
-      use: [{
-        loader: "style-loader" // creates style nodes from JS strings
-        }, {
-        loader: "css-loader" // translates CSS into CommonJS
-        }, {
-        loader: "sass-loader" // compiles Sass to CSS
-        }]
+      use: [ "style-loader","css-loader", "sass-loader" ]
       },
       {
         test: /\.js$/,
@@ -31,17 +27,23 @@ module.exports = {
         test: /\.(woff|svg|ttf|eot)$/i,
         loader:'url-loader',
         options:{
-          /*图片名称*/
           name:"fonts/[name].[ext]"
-          /*位置*/
         }
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
+        use: [{
+            loader: 'url-loader',
+            options: {
+              limit: 8192
+            }
+        }]
       }
-      // {
-      //   test: /\.json$/,
-      //   loader: 'json-loader',
-      //   exclude: /(node_modules)/,
-      //   include: path.join(__dirname,'json')
-      // }
     ]
-  }
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname,'index.html')
+    })
+  ]
 }
