@@ -2,6 +2,7 @@ import './tab.js'
 import './lazyload.js'
 import {Search} from './search.js'
 import '../scss/app.scss'
+
 fetch('/json/rec.json')
   .then(res => res.json())
   .then(render);
@@ -12,7 +13,6 @@ fetch('/json/toplist.json')
 
 
 let search = new Search(document.querySelector('.search-tab'));
-
 function render(json){
   renderslider(json.data.slider);
   renderRadioList(json.data.radioList);
