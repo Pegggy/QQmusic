@@ -27,17 +27,17 @@
     <div class="search-tab">
       <div class="search-bar">
         <div class="search-wrap">
-          <form action="#" class="search-form">
+          <form action="#" class="search-form" autocomplete="off">
             <input type="text" class="search-input" id="search-input" placeholder="搜索歌曲、歌单、专辑">
             <i class="iconfont icon-search"></i>
           </form>
         </div>
-        <div class="cancel-btn">取消</div>
+        <div class="cancel-btn hide">取消</div>
       </div>
-      <div class="result-wrap">
+      <div class="result-wrap hide">
         <div class="search-result">
           <ul class="search-content">
-            <li class="singer-info clearfix">
+            <!-- <li class="singer-info clearfix">
               <span>
                 <img src="https://y.gtimg.cn/music/photo_new/T001R68x68M000001pWERg3vFgg8.jpg?max_age=2592000" alt="">
               </span>
@@ -46,7 +46,7 @@
                 <span>单曲：240</span>
                 <span>专辑：25</span>
               </p>
-            </li>
+            </li> -->
           </ul>
           <div class="loading hide">
             <img src="imgs/loading.png">
@@ -55,7 +55,7 @@
           <div class="nomore hide">全部加载完毕</div>
         </div>
       </div>
-      <div class="hot-search hide">
+      <div class="hot-search">
         <h3>热门搜索</h3>
         <div class="hot-tags">
           <a href="#" class="hot-key tags">中国新歌声第二季</a>
