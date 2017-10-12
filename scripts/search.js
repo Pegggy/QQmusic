@@ -8,14 +8,14 @@ export class Search{
     this.$input.addEventListener('focus',this.onFocus.bind(this));
     this.$cancelBtn.addEventListener('click',this.onBtnClick.bind(this));
     this.$input.addEventListener('keyup',this.onKeyUp.bind(this));
-    this.onScroll = this.onScroll.bind(this);
+    this.onscroll = throttle(this.onScrollFn.bind(this),500);
     this.keyword = '';
     this.page = 1;
     this.perpage = 20;
     this.cancel = false;
     this.end = false;
     this.isLoading = false;
-    window.addEventListener('scroll',throttle(this.onScroll,500));
+    window.addEventListener('scroll',this.onscroll);
 
   }
   onFocus(event){
@@ -38,14 +38,11 @@ export class Search{
     if(event.keyCode !== 13 || this.isLoading ) return
     this.search(keyword)
   }
-  onScroll(event){
-    console.log(111);
+  onScrollFn(event){
+    console.log(this.end);
     if(this.end) {
       this.$ct.querySelector('.nomore').classList.remove('hide');
-      return
-    }
-    if(this.isLoading){
-      return
+      return window.removeEventListener('scroll',this.onscroll);
     }
     if(document.documentElement.clientHeight + window.pageYOffset > document.body.scrollHeight - 50 ){
       this.search(this.keyword, this.page + 1 )
@@ -57,6 +54,9 @@ export class Search{
     this.$songs.innerHTML = '';
   }
   search(keyword,page){
+    if(this.isLoading){
+      return
+    }
     this.onFocus();
     this.isLoading = true;
     this.showLoading()
@@ -65,7 +65,7 @@ export class Search{
       .then(res => res.json())
       .then(json => {
         this.page = json.data.song.curpage;
-        // this.end = json.data.message === "";
+        this.end = (json.message === "no results");
         return json.data.song.list;
       })
       .then(list => this.renderResult(list))
