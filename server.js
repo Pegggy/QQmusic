@@ -51,7 +51,10 @@ app.get('/search',async(req,res) => {
     res.json({error: e.message})
   }
 })
-
+app.get('lyric',async(req,res) => {
+  let { } = req.query;
+  const url = `https://c.y.qq.com/lyric/fcgi-bin/fcg_query_lyric.fcg?nobase64=1&musicid=9064211&songtype=0`
+})
 app.listen(PORT)
 console.log('进入 localhost:4000 ~ 查看数据')
 

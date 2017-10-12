@@ -86,7 +86,7 @@ export class Search{
     if(type === 2){
       imgUrl = zhida.singermid;
       return  `
-        <li class="singer-info clearfix">
+        <li class="singer-info clearfix" data-singermid=${zhida.singermid}>
           <span>
             <img src="https://y.gtimg.cn/music/photo_new/T001R68x68M000${imgUrl}.jpg?max_age=2592000">
           </span>
@@ -100,7 +100,7 @@ export class Search{
     }else if( type === 3){
       imgUrl = zhida.albummid;
       return `
-        <li class="singer-info clearfix">
+        <li class="singer-info clearfix" data-albummid=${zhida.albummid}>
           <span>
             <img src="https://y.gtimg.cn/music/photo_new/T001R68x68M000${imgUrl}.jpg?max_age=2592000">
           </span>
@@ -120,7 +120,7 @@ export class Search{
     let lists = data.song.list;
     let html = lists.map(list => {
       let artist = list.singer.map(singer => singer.name).join(' / ');
-      return ` <li class="song clearfix">
+      return ` <li class="song clearfix" data-songid=${list.songid} data-songmid=${songmid}>
       <i class="iconfont icon-music"></i>
       <h6 class="result-title">${list.songname}</h6>
       <p class="result-content">
