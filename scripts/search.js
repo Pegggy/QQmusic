@@ -1,3 +1,4 @@
+import throttle from './throttle.js'
 export class Search{
   constructor(ct){
     this.$ct = ct;
@@ -7,14 +8,14 @@ export class Search{
     this.$input.addEventListener('focus',this.onFocus.bind(this));
     this.$cancelBtn.addEventListener('click',this.onBtnClick.bind(this));
     this.$input.addEventListener('keyup',this.onKeyUp.bind(this));
-    
+    this.onScroll = this.onScroll.bind(this);
     this.keyword = '';
     this.page = 1;
     this.perpage = 20;
     this.cancel = false;
     this.end = false;
     this.isLoading = false;
-    window.addEventListener('scroll',this.onScroll.bind(this))
+    window.addEventListener('scroll',throttle(this.onScroll,500));
 
   }
   onFocus(event){
@@ -38,6 +39,7 @@ export class Search{
     this.search(keyword)
   }
   onScroll(event){
+    console.log(111);
     if(this.end) {
       this.$ct.querySelector('.nomore').classList.remove('hide');
       return

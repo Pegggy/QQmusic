@@ -1,5 +1,6 @@
 import './tab.js'
 import './lazyload.js'
+
 import {Search} from './search.js'
 import '../scss/app.scss'
 
