@@ -1,8 +1,8 @@
 import './tab.js'
 import './lazyload.js'
-
 import {Search} from './search.js'
 import '../scss/app.scss'
+import MusicPlayer from'./player.js'
 
 fetch('/json/rec.json')
   .then(res => res.json())
@@ -18,7 +18,7 @@ function render(json){
   renderslider(json.data.slider);
   renderRadioList(json.data.radioList);
 }
-
+let Player = new MusicPlayer(document.querySelector('#player'));
 function renderslider(slides){
   let $swiper = document.querySelector('.swiper-container');
   $swiper.innerHTML = ' <div class="swiper-wrapper"></div><div class="swiper-pagination" id="swiper-pagination"></div>';

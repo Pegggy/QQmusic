@@ -22,38 +22,58 @@
     padding: 15px;
     z-index: 21;
     color: #fff;
+    min-height: 110px;
   }
   .album-cover{
     width: 80px;
     height: 80px;
+    display: block;
   }
   .song-info{ 
     margin-left: 20px;
     flex-grow: 1;
+    display: flex;
+    flex-direction: column;
     .song-name{
       font-size: 18px;
       height: 30px;
+      display: inline-block;
     }
     .singer-name{
       font-size: 14px;
       height: 21px;
+      display: inline-block;
     }
   }
-  .icon-yinlebofang{
+  .icon-bofang{
+    width: 50px;
+    height: 50px;
+    border: solid 1px $icon-color;
+    border-radius: 999px;
+    text-align: center;
+    line-height: 50px;
     &:after{
       font-family: "iconfont";
-      content: '\e6e8';
+      content: '\e87c';
       display: block;
-      font-size: 46px;
+      font-size: 24px;
       color: $icon-color;
+      
     }
   }
-  .icon-pause1{
+  .icon-zanting{
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    border: solid 1px $icon-color;
+    border-radius: 999px;
+    text-align: center;
+    line-height: 50px;
     &:after{
       font-family: "iconfont";
-      content: '\e630';
+      content: '\e87a';
       display: block;
-      font-size: 46px;
+      font-size: 24px;
       color: $icon-color;
     }
   }
@@ -88,7 +108,7 @@
         font-family: "iconfont";
         content: '\e697';
         display: block;
-        font-size: 40px;
+        font-size: 30px;
         color: rgba(255,255,255,.6);
       }
     }
