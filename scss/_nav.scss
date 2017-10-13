@@ -11,7 +11,7 @@
     width: 100%;
     position: relative;
     &.active{
-      color: $header-background;
+      color: $primary-color;
       &:after{
         content: '';
         display: block;
@@ -20,7 +20,7 @@
         left: 0;
         height: 2px;
         width: 100%;
-        background: $header-background;
+        background: $primary-color;
       }
     }
 
