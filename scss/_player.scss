@@ -130,6 +130,7 @@
         height: 2px;
         background: $primary-color;
         transform: translate(-100%);
+        transition: all 1s linear;
       }
     }
     .progress-time{

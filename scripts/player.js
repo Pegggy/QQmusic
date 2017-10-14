@@ -1,10 +1,12 @@
 import ProgressBar from './progress_bar.js'
+import LyricsPlayer from './lyrics.js'
 export default class MusicPlayer{
   constructor(ct){
     this.$ct = ct;
     this.$ct.addEventListener('click',this.handleClick.bind(this))
     // this.lyrics = new LyricsPlayer(this.$ct.querySelector('.player-lyrics'))
-    this.progress = new ProgressBar(this.$ct.querySelector('.progress'),288,true);
+    this.progress = new ProgressBar(this.$ct.querySelector('.progress'),61,true);
+    this.lyrics = new LyricsPlayer(this.$ct.querySelector('.player-lyrics'));
   }
   handleClick(event){
     let target = event.target;
@@ -12,9 +14,11 @@ export default class MusicPlayer{
     switch(true){
       case target.matches('.icon-bofang'):
         this.onPlay(event);
+        this.progress.start();
         break;
       case target.matches('.icon-zanting'):
         this.onPause(event);
+        this.progress.pause();
         break;
       case target.matches('.icon-icon-music-lsit'):
         this.hide();
