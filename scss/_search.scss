@@ -54,6 +54,7 @@
   }
 }
 .singer-info{
+  display: block;
   > span{
     float: left;
     margin-left: 8px;
@@ -71,6 +72,7 @@
   font-size: 16px;
   line-height: 18px;
   margin: 10px 0 0 55px;
+  color: #000;
 }
 .result-content{
   color: $result-content-color;
@@ -81,6 +83,7 @@
   }
 }
 .song {
+  display: block;
   .icon-music{
     float: left;
     margin-left: 8px;

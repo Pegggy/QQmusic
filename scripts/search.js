@@ -86,7 +86,7 @@ export class Search{
     if(type === 2){
       imgUrl = zhida.singermid;
       return  `
-        <li class="singer-info clearfix" data-singermid=${zhida.singermid}>
+        <a class="singer-info clearfix" data-singermid=${zhida.singermid}>
           <span>
             <img src="https://y.gtimg.cn/music/photo_new/T001R68x68M000${imgUrl}.jpg?max_age=2592000">
           </span>
@@ -95,12 +95,12 @@ export class Search{
             <span>单曲：${zhida.songnum}</span>
             <span>专辑：${zhida.albumnum}</span>
           </p>
-        </li> 
+        </a> 
       `;
     }else if( type === 3){
       imgUrl = zhida.albummid;
       return `
-        <li class="singer-info clearfix" data-albummid=${zhida.albummid}>
+        <a class="singer-info clearfix" data-albummid=${zhida.albummid}>
           <span>
             <img src="https://y.gtimg.cn/music/photo_new/T001R68x68M000${imgUrl}.jpg?max_age=2592000">
           </span>
@@ -108,7 +108,7 @@ export class Search{
           <p class="result-content text-hide">
             <span>${zhida.singername}</span>
           </p>
-        </li> 
+        </a> 
       `
     }
     else return '' 
@@ -120,13 +120,13 @@ export class Search{
     let lists = data.song.list;
     let html = lists.map(list => {
       let artist = list.singer.map(singer => singer.name).join(' / ');
-      return ` <li class="song clearfix" data-songid=${list.songid} data-songmid=${songmid}>
+      return ` <a class="song clearfix" href="#player?artist=${artist}&songid=${list.songid}&songmid=${list.songmid}&songname=${list.songname}&albummid=${list.albummid}&duration=${list.interval}">
       <i class="iconfont icon-music"></i>
       <h6 class="result-title">${list.songname}</h6>
       <p class="result-content">
         <span>${artist}</span>
       </p>
-    </li>
+    </a>
     `}).join('');
     this.$songs.insertAdjacentHTML('beforeend',tophtml + html);
   }

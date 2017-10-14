@@ -42,6 +42,6 @@ export default class MusicPlayer{
 
   }
   hide(){
-    this.$ct.classList.add('hide');
+    this.$ct.classList.add('remove');
   }
 }
