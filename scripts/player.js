@@ -4,7 +4,7 @@ export default class MusicPlayer{
     this.$ct = ct;
     this.$ct.addEventListener('click',this.handleClick.bind(this))
     // this.lyrics = new LyricsPlayer(this.$ct.querySelector('.player-lyrics'))
-    this.progress = new ProgressBar(this.$ct.querySelector('.progress'))
+    this.progress = new ProgressBar(this.$ct.querySelector('.progress'),288);
   }
   handleClick(event){
     let target = event.target;
