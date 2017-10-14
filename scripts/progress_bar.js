@@ -1,5 +1,5 @@
 export default class ProgressBar{
-  constructor(ct,duration){
+  constructor(ct,duration,start){
     this.$ct = ct;
     this.elapsed = 0;
     this.progress = 0;
@@ -10,7 +10,7 @@ export default class ProgressBar{
     this.$progress = this.$ct.querySelector('.progress-play');
     this.$elapsed.innerText = this.formatTime(this.elapsed);
     this.$duration.innerText = this.formatTime(this.duration);
-    this.start()
+    if(start)this.start()
   }
   start(){
     this.intervalId = setInterval(this.update.bind(this),1000);
@@ -23,6 +23,14 @@ export default class ProgressBar{
     this.progress = this.elapsed / this.duration ;
     this.$progress.style.transform = `translate(${this.progress * 100 -100}%)`;
     this.$elapsed.innerText = this.formatTime(this.elapsed);
+  }
+  reset(duration){
+    this.elapsed = 0;
+    this.progress = 0;
+    if(duration){
+      this.duration = +duration;
+      this.$duration.innerText = this.formatTime(this.duration);
+    }
   }
   formatTime(seconds){
     let min = Math.floor( seconds / 60 );
