@@ -1,7 +1,10 @@
+import ProgressBar from './progress_bar.js'
 export default class MusicPlayer{
   constructor(ct){
     this.$ct = ct;
     this.$ct.addEventListener('click',this.handleClick.bind(this))
+    // this.lyrics = new LyricsPlayer(this.$ct.querySelector('.player-lyrics'))
+    this.progress = new ProgressBar(this.$ct.querySelector('.progress'))
   }
   handleClick(event){
     let target = event.target;
