@@ -37,9 +37,12 @@ function onHashChange(){
       obj[attr] = value;
       options = Object.assign({},options,obj);
     })
-  }
-  console.log(options)
+    player.play(options);
+  }else{
+    player.hide();
+  } 
 }
+
 window.addEventListener('hashchange',onHashChange);
 function renderslider(slides){
   let $swiper = document.querySelector('.swiper-container');
