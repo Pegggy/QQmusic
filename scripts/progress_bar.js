@@ -37,6 +37,9 @@ export default class ProgressBar{
       this.$duration.innerText = this.formatTime(this.duration);
     }
   }
+  restart(){
+    
+  }
   formatTime(seconds){
     let min = Math.floor( seconds / 60 );
     let sec = Math.floor( seconds % 60 );

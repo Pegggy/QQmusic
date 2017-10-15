@@ -16,11 +16,31 @@ fetch('/json/toplist.json')
 
 
 let search = new Search(document.querySelector('.search-tab'));
+let player = new MusicPlayer(document.querySelector('#player'));
+
 function render(json){
   renderslider(json.data.slider);
   renderRadioList(json.data.radioList);
 }
-let player = new MusicPlayer(document.querySelector('#player'));
+
+
+function onHashChange(){
+  let hash = location.hash;
+  let options = {};
+  console.log(hash);
+  if(/^#player\?.+/.test(hash)){
+    let keys = hash.slice(hash.slice(hash.indexOf('?') + 1)).match(/(\w+)=([^&]+)/g);
+    keys.map(key =>{
+      let obj = {},
+          attr = key.split('=')[0],
+          value = key.split('=')[1];
+      obj[attr] = value;
+      options = Object.assign({},options,obj);
+    })
+  }
+  console.log(options)
+}
+window.addEventListener('hashchange',onHashChange);
 function renderslider(slides){
   let $swiper = document.querySelector('.swiper-container');
   $swiper.innerHTML = ' <div class="swiper-wrapper"></div><div class="swiper-pagination" id="swiper-pagination"></div>';

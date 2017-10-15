@@ -102,7 +102,7 @@ export class Search{
       return `
         <a class="singer-info clearfix" data-albummid=${zhida.albummid}>
           <span>
-            <img src="https://y.gtimg.cn/music/photo_new/T001R68x68M000${imgUrl}.jpg?max_age=2592000">
+            <img src="https://y.gtimg.cn/music/photo_new/T002R68x68M000${imgUrl}.jpg?max_age=2592000">
           </span>
           <h6 class="result-title">${zhida.albumname}</h6>
           <p class="result-content text-hide">
@@ -120,14 +120,13 @@ export class Search{
     let lists = data.song.list;
     let html = lists.map(list => {
       let artist = list.singer.map(singer => singer.name).join(' / ');
-      return ` <a class="song clearfix" href="#player?artist=${artist}&songid=${list.songid}&songmid=${list.songmid}&songname=${list.songname}&albummid=${list.albummid}&duration=${list.interval}">
-      <i class="iconfont icon-music"></i>
-      <h6 class="result-title">${list.songname}</h6>
-      <p class="result-content">
-        <span>${artist}</span>
-      </p>
-    </a>
-    `}).join('');
+      return `<a class="song clearfix" href="#player?artist=${artist}&songid=${list.songid}&songname=${list.songname}&albummid=${list.albummid}&duration=${list.interval}">
+          <i class="iconfont icon-music"></i>
+          <h6 class="result-title">${list.songname}</h6>
+          <p class="result-content">
+            <span>${artist}</span>
+          </p>
+       </a>`}).join('');
     this.$songs.insertAdjacentHTML('beforeend',tophtml + html);
   }
 }
