@@ -32,13 +32,15 @@ export default class ProgressBar{
     this.pause();
     this.elapsed = 0;
     this.progress = 0;
+    this.$elapsed.innerText = this.formatTime(this.elapsed);
+    this.$progress.style.transform = `translate(-100%)`;
     if(duration){
       this.duration = +duration;
       this.$duration.innerText = this.formatTime(this.duration);
     }
   }
   restart(){
-    
+
   }
   formatTime(seconds){
     let min = Math.floor( seconds / 60 );

@@ -6,7 +6,7 @@ export default class MusicPlayer{
     this.$ct.addEventListener('click',this.handleClick.bind(this));
     this.$audio = this.createAudio();
     this.progress = new ProgressBar(this.$ct.querySelector('.progress'));
-    this.lyrics = new LyricsPlayer(this.$ct.querySelector('.player-lyrics'));
+    this.lyrics = new LyricsPlayer(this.$ct.querySelector('.player-lyrics'),this.$audio);
   }
   handleClick(event){
     let target = event.target;
@@ -25,6 +25,10 @@ export default class MusicPlayer{
       return
     }
   }
+  createAudio(){
+    let audio = document.createElement('audio');
+    return audio;
+  }
   play(options){
     if(!options) return;
     this.$ct.querySelector('.song-name').innerText = options.songname;
@@ -33,6 +37,29 @@ export default class MusicPlayer{
     let imgUrl = `https://y.gtimg.cn/music/photo_new/T002R150x150M000${options.albummid}.jpg`;
     this.$ct.querySelector('.album-cover').src = imgUrl;
     this.$ct.querySelector('.play-background').style.backgroundImage = `url(${imgUrl})`;
+    if(options.songid){
+      // if(options.songid !== this.songid){
+
+      // }
+      this.songid = options.songid;
+      this.$audio.src = `http://ws.stream.qqmusic.qq.com/${this.songid}.m4a?fromtag=46`;
+      const url = `http://localhost:4000/lyrics?id=${this.songid}`;
+      fetch(url)
+        .then(res => {
+          let json = res.json();
+          console.log(json);
+          return json;
+        })
+        .then(json => {
+          console.log(json);
+          return json.lyric
+        })
+        .then(text => {
+          console.log(text);
+          this.lyrics.reset(text)
+        })
+        .catch(()=>{})
+    }
     this.show();
   }
   createAudio(){
@@ -51,7 +78,7 @@ export default class MusicPlayer{
     this.progress.pause();
   }
   show(){
-    this.$ct.classList.remove('hide');
+    this.$ct.classList.remove('remove');
   }
 
   hide(){

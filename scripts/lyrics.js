@@ -1,15 +1,14 @@
 
 export default class LyricsPlayer{
-  constructor($ct){
+  constructor($ct,audio){
     this.$ct = $ct;
+    this.$audio = audio;
     this.$lines = this.$ct.querySelector('.lyrics-lines');
     this.text = '';
     this.index = 0;
     this.elapsed = 0;
     this.lyrics  = [];
-    this.reset(this.formatText(this.text));
-    this.render();
-    this.start();
+    this.reset(this.text);
   }
   start(){
     this.pause();
@@ -36,8 +35,23 @@ export default class LyricsPlayer{
     }
   }
   reset(text){
-    this.lyrics = text.match(/^\[(\d{2}:\d{2}.\d{2})\].+$/gm) || [];
-    console.log(this.lyrics);
+    this.pause();
+    this.index = 0;
+    this.elapsed = 0;
+    this.$lines.style.transform = `translateY(0)`;
+    let $active = this.$lines.querySelector('.active');
+    if($active){
+      $active.classList.remove('active');
+    }
+    if(text){
+      this.text = this.formatText(text) || '';
+      this.lyrics = this.text.match(/^\[\d{2}:\d{2}.\d{2}\](.+)$/gm) || [];
+      if(this.lyrics.length) {
+        this.render();
+        this.$lines.children[this.index].classList.add('active');
+      }
+    }
+    
   }
   getSeconds(line){
     return +line.replace(/\[(\d{2})\:(\d{2}).*/,(match,p1,p2)=>
@@ -48,7 +62,6 @@ export default class LyricsPlayer{
     let html = this.lyrics.map( line =>`
       <p class="lyrics-line">${line.slice(10)}</p>
     `).join('');
-    console.log(html);
     this.$lines.innerHTML = html;
   }
   formatText(text){

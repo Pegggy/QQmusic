@@ -17,7 +17,7 @@ fetch('/json/toplist.json')
 
 let search = new Search(document.querySelector('.search-tab'));
 let player = new MusicPlayer(document.querySelector('#player'));
-
+window.player = player;
 function render(json){
   renderslider(json.data.slider);
   renderRadioList(json.data.radioList);
