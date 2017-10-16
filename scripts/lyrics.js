@@ -51,7 +51,7 @@ export default class LyricsPlayer{
         this.$lines.children[this.index].classList.add('active');
       }
     }
-    
+
   }
   getSeconds(line){
     return +line.replace(/\[(\d{2})\:(\d{2}).*/,(match,p1,p2)=>
@@ -60,7 +60,7 @@ export default class LyricsPlayer{
   }
   render(){
     let html = this.lyrics.map( line =>`
-      <p class="lyrics-line">${line.slice(10)}</p>
+      <p class="lyrics-line text-hide">${line.slice(10)}</p>
     `).join('');
     this.$lines.innerHTML = html;
   }

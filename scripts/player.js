@@ -27,6 +27,7 @@ export default class MusicPlayer{
   }
   createAudio(){
     let audio = document.createElement('audio');
+    document.body.appendChild(audio);
     return audio;
   }
   play(options){
@@ -45,19 +46,9 @@ export default class MusicPlayer{
       this.$audio.src = `http://ws.stream.qqmusic.qq.com/${this.songid}.m4a?fromtag=46`;
       const url = `http://localhost:4000/lyrics?id=${this.songid}`;
       fetch(url)
-        .then(res => {
-          let json = res.json();
-          console.log(json);
-          return json;
-        })
-        .then(json => {
-          console.log(json);
-          return json.lyric
-        })
-        .then(text => {
-          console.log(text);
-          this.lyrics.reset(text)
-        })
+        .then(res =>  res.json())
+        .then(json => json.lyric)
+        .then(text => this.lyrics.reset(text))
         .catch(()=>{})
     }
     this.show();
@@ -71,14 +62,18 @@ export default class MusicPlayer{
     event.target.classList.remove('icon-bofang');
     event.target.classList.add('icon-zanting');
     this.progress.start();
+    this.lyrics.start();
+    this.$audio.play();
   }
   onPause(event){
     event.target.classList.add('icon-bofang');
     event.target.classList.remove('icon-zanting');
     this.progress.pause();
+    this.lyrics.pause();
+    this.$audio.pause();
   }
   show(){
-    this.$ct.classList.remove('remove');
+    this.$ct.classList.remove('hide') || this.$ct.classList.remove('remove');
   }
 
   hide(){
