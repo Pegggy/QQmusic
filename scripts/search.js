@@ -21,8 +21,13 @@ export class Search{
     this.isLoading = false;
     window.addEventListener('scroll',this.onscroll);
   }
-  searchHistory(keyword){
+  addRecord(keyword){
     this.searchRecord.push(keyword);
+    window.localStorage["search_record"] = this.searchRecord;
+  }
+  removeRecord(keyword){
+    let index = this.searchRecord.indexOf(keyword);
+    this.searchRecord.splice(index,1);
     window.localStorage["search_record"] = this.searchRecord;
   }
   showRecord(){
@@ -43,7 +48,7 @@ export class Search{
   }
   onFocus(event){
     this.$ct.querySelector('.hot-search').classList.add('hide');
-    this.$ct.querySelector('.result-wrap').classList.remove('hide');
+    this.$ct.querySelector('.result-wrap').classList.add('hide');
     this.$cancelBtn.classList.remove('hide');
     this.$searchRecord.classList.remove('hide');
     this.showRecord();
@@ -63,7 +68,7 @@ export class Search{
     let keyword = event.target.value.trim();
     if(!keyword) this.reset();
     if(event.keyCode !== 13 || this.isLoading ) return;
-    this.searchHistory(keyword);
+    this.addRecord(keyword);
     this.search(keyword); 
     this.$searchRecord.classList.add('hide'); 
   }
@@ -82,11 +87,14 @@ export class Search{
     this.page = 1;
     this.$songs.innerHTML = '';
   }
+  showSearchResult(){
+    this.$ct.querySelector('.result-wrap').classList.remove('hide');
+  }
   search(keyword,page){
     if(this.isLoading){
       return
     }
-    this.onFocus();
+    this.showSearchResult();
     this.isLoading = true;
     this.showLoading()
     this.keyword = keyword;
@@ -104,6 +112,14 @@ export class Search{
       })
   }
   onRecordClick(event){
+    let target = event.target;
+    if(target === this.$ct.querySelector('.icon-cuowu')){
+      let keyword = target.parentNode.dataset.key;
+      console.log(keyword);
+      console.log(this.searchRecord);
+      this.removeRecord(keyword)
+      this.showRecord();
+    }
     let value = event.target.dataset.key;
     this.search(value);
     this.$searchRecord.classList.add('hide');
