@@ -18,8 +18,8 @@ export default class LyricsPlayer{
     clearInterval(this.intervalId);
   }
   update(){
-    this.elapsed += 1
-    if(this.index === this.lyrics.length - 1) return
+    this.elapsed = Math.round(this.$audio ? this.$audio.currentTime : this.elapsed + 1);
+    if(this.index === this.lyrics.length - 1) return;
     for(let i = this.index + 1; i < this.lyrics.length; i++){
       let seconds = this.getSeconds(this.lyrics[i])
       if(this.elapsed === seconds && (!this.lyrics[i+1] || 
@@ -33,6 +33,10 @@ export default class LyricsPlayer{
       let topY = -(this.index - 2) * this.LINE_HEIGHT;
       this.$lines.style.transform = `translateY(${topY}px)`
     }
+  }
+  restart(){
+    this.reset();
+    this.start();
   }
   reset(text){
     this.pause();
@@ -51,7 +55,6 @@ export default class LyricsPlayer{
         this.$lines.children[this.index].classList.add('active');
       }
     }
-
   }
   getSeconds(line){
     return +line.replace(/\[(\d{2})\:(\d{2}).*/,(match,p1,p2)=>

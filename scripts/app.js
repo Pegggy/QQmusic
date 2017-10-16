@@ -3,7 +3,6 @@ import './lazyload.js'
 import {Search} from './search.js'
 import '../scss/app.scss'
 import LyricsPlayer from './lyrics.js'
-
 import MusicPlayer from'./player.js'
 
 fetch('/json/rec.json')
@@ -17,7 +16,13 @@ fetch('/json/toplist.json')
 
 let search = new Search(document.querySelector('.search-tab'));
 let player = new MusicPlayer(document.querySelector('#player'));
+let playBtn = document.querySelector('.player-btn');
 window.player = player;
+onHashChange();
+playBtn.addEventListener('click',()=>{
+  player.show();
+})
+
 function render(json){
   renderslider(json.data.slider);
   renderRadioList(json.data.radioList);

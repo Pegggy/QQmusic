@@ -10,7 +10,6 @@ export default class MusicPlayer{
   }
   handleClick(event){
     let target = event.target;
-    console.log(target);
     switch(true){
       case target.matches('.icon-bofang'):
         this.onPlay(event);
@@ -27,6 +26,11 @@ export default class MusicPlayer{
   }
   createAudio(){
     let audio = document.createElement('audio');
+    audio.addEventListener('ended', () => {
+      this.$audio.play()
+      this.lyrics.restart()
+      this.progress.restart()
+    });
     document.body.appendChild(audio);
     return audio;
   }
@@ -53,11 +57,6 @@ export default class MusicPlayer{
     }
     this.show();
   }
-  createAudio(){
-    let audio = document.createElement('audio');
-    document.body.appendChild(audio);
-    return audio;
-  }
   onPlay(event){
     event.target.classList.remove('icon-bofang');
     event.target.classList.add('icon-zanting');
@@ -74,6 +73,7 @@ export default class MusicPlayer{
   }
   show(){
     this.$ct.classList.remove('hide') || this.$ct.classList.remove('remove');
+
   }
 
   hide(){

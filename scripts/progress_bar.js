@@ -19,6 +19,7 @@ export default class ProgressBar{
   pause(){
     clearInterval(this.intervalId)
   }
+  
   update(){
     if(this.elapsed >= this.duration){
       this.reset();
@@ -40,7 +41,8 @@ export default class ProgressBar{
     }
   }
   restart(){
-
+    this.reset();
+    this.start();
   }
   formatTime(seconds){
     let min = Math.floor( seconds / 60 );
