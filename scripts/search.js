@@ -5,35 +5,43 @@ export class Search{
     this.$input = this.$ct.querySelector('#search-input');
     this.$songs = this.$ct.querySelector('.search-content');
     this.$cancelBtn = this.$ct.querySelector('.cancel-btn');
-    this.$searchRecord = this.$ct.querySelector('.search-record');
+    this.$record = this.$ct.querySelector('.search-record');
+    this.searchRecord = [];
+    this.storage = window.localStorage;
+    this.storage.setItem("search_record",this.searchRecord);
+    this.onscroll = throttle(this.onScrollFn.bind(this),500);
+
+    this.$record.addEventListener('click',this.recordClick.bind(this));
     this.$input.addEventListener('focus',this.onFocus.bind(this));
     this.$cancelBtn.addEventListener('click',this.onBtnClick.bind(this));
     this.$input.addEventListener('keyup',this.onKeyUp.bind(this));
-    this.$searchRecord.addEventListener('click',this.onRecordClick.bind(this));
-    this.onscroll = throttle(this.onScrollFn.bind(this),500);
+    window.addEventListener('scroll',this.onscroll);
+    
     this.keyword = '';
     this.searchRecord = [];
-    window.localStorage.setItem("search_record",this.searchRecord);
     this.page = 1;
     this.perpage = 20;
     this.cancel = false;
     this.end = false;
     this.isLoading = false;
-    window.addEventListener('scroll',this.onscroll);
+    
   }
-  addRecord(keyword){
-    this.searchRecord.push(keyword);
-    window.localStorage["search_record"] = this.searchRecord;
+
+  recordClick(event){
+    let target = event.target;
+    if(target === this.$ct.querySelector('.icon-cuowu')){
+      let keyword = target.parentNode.dataset.key;
+      this.deleteRecord(keyword)
+      this.recordrender();
+    }
+    let value = target.dataset.key;
+    this.search(value);
+    hide(this.$record);
   }
-  removeRecord(keyword){
-    let index = this.searchRecord.indexOf(keyword);
-    this.searchRecord.splice(index,1);
-    window.localStorage["search_record"] = this.searchRecord;
-  }
-  showRecord(){
-    this.$searchRecord.innerHTML = '';
-    if(!window.localStorage["search_record"])return;
-    let records = window.localStorage["search_record"];
+  recordrender(){
+    this.$record.innerHTML = '';
+    if(!this.storage["search_record"])return;
+    let records = this.storage["search_record"];
     let keywords = records.split(',');
     let html = keywords.map(keyword => `
       <li>
@@ -44,37 +52,58 @@ export class Search{
         </a>
       </li>
     `).join('');
-    this.$searchRecord.insertAdjacentHTML('beforeend',html);
+    this.$record.insertAdjacentHTML('beforeend',html);
   }
+  deleteRecord(keyword){
+    let index = this.searchRecord.indexOf(keyword);
+    this.searchRecord.splice(index,1);
+    this.storage.setItem("search_record",this.searchRecord);
+    this.recordrender();
+  }
+  addRecord(keyword){
+    this.searchRecord.push(keyword);
+    this.storage.setItem("search_record",this.searchRecord);
+  }
+  // recordshow(){
+  //   this.$record.classList.remove('hide');
+  // }
+  // recordhide(){
+  //   this.$record.classList.add('hide');
+  // }
   onFocus(event){
     this.$ct.querySelector('.hot-search').classList.add('hide');
-    this.$ct.querySelector('.result-wrap').classList.add('hide');
-    this.$cancelBtn.classList.remove('hide');
-    this.$searchRecord.classList.remove('hide');
-    this.showRecord();
+    show(this.$cancelBtn);
+    this.recordrender();
+    show(this.$record);
   }
   onBtnClick(event){
     this.cancel = !this.cancel;
     this.reset();
     if(this.cancel){
-      this.$ct.querySelector('.hot-search').classList.remove('hide');
-      this.$ct.querySelector('.result-wrap').classList.add('hide');
-      this.$ct.querySelector('.cancel-btn').classList.add('hide');
-      this.$ct.querySelector('.nomore').classList.add('hide');
-      this.$searchRecord.classList.add('hide');
+      show(this.$ct.querySelector('.hot-search'));
+      hide(this.$ct.querySelector('.result-wrap'))
+      hide(this.$ct.querySelector('.cancel-btn'));
+      hide(this.$ct.querySelector('.nomore'));
+      hide(this.$record);
     }
   }
+  // onBlur(event){
+  //   console.log(event.target);
+  //   let key = this.record.keyword;
+  //   console.log(key);
+  //   this.search(key);
+  // }
   onKeyUp(event){
     let keyword = event.target.value.trim();
     if(!keyword) this.reset();
     if(event.keyCode !== 13 || this.isLoading ) return;
     this.addRecord(keyword);
     this.search(keyword); 
-    this.$searchRecord.classList.add('hide'); 
+    hide(this.$record);
   }
   onScrollFn(event){
     if(this.end) {
-      this.$ct.querySelector('.nomore').classList.remove('hide');
+      show(this.$ct.querySelector('.nomore'));
       return window.removeEventListener('scroll',this.onscroll);
     }
     if(document.documentElement.clientHeight + window.pageYOffset > document.body.scrollHeight - 50 ){
@@ -87,16 +116,14 @@ export class Search{
     this.page = 1;
     this.$songs.innerHTML = '';
   }
-  showSearchResult(){
-    this.$ct.querySelector('.result-wrap').classList.remove('hide');
-  }
+
   search(keyword,page){
     if(this.isLoading){
       return
     }
-    this.showSearchResult();
+    show(this.$ct.querySelector('.result-wrap'));
     this.isLoading = true;
-    this.showLoading()
+    show(this.$ct.querySelector('.loading'));
     this.keyword = keyword;
     fetch(`http://localhost:4000/search?keyword=${this.keyword}&page=${page||this.page}`)
       .then(res => res.json())
@@ -108,28 +135,26 @@ export class Search{
       .then(data => this.renderResult(data))
       .then(() => {
         this.isLoading = false;
-        this.hideLoading();
+        hide(this.$ct.querySelector('.loading'))
       })
   }
-  onRecordClick(event){
-    let target = event.target;
-    if(target === this.$ct.querySelector('.icon-cuowu')){
-      let keyword = target.parentNode.dataset.key;
-      console.log(keyword);
-      console.log(this.searchRecord);
-      this.removeRecord(keyword)
-      this.showRecord();
-    }
-    let value = event.target.dataset.key;
-    this.search(value);
-    this.$searchRecord.classList.add('hide');
-  }
-  showLoading(){
-    this.$ct.querySelector('.loading').classList.remove('hide');
-  }
-  hideLoading(){
-    this.$ct.querySelector('.loading').classList.add('hide');
-  }
+  // onRecordClick(event){
+  //   let target = event.target;
+  //   if(target === this.record.querySelector('.icon-cuowu')){
+  //     let keyword = target.parentNode.dataset.key;
+  //     this.record.removeRecord(keyword)
+  //     this.record.showRecord();
+  //   }
+  //   let value = event.target.dataset.key;
+  //   this.search(value);
+  //   this.record.hide();
+  // }
+  // showLoading(){
+  //   this.$ct.querySelector('.loading').classList.remove('hide');
+  // }
+  // hideLoading(){
+  //   this.$ct.querySelector('.loading').classList.add('hide');
+  // }
   renderSinger(zhida,type){
     let imgUrl;
     if(type === 2){
@@ -178,4 +203,13 @@ export class Search{
        </a>`}).join('');
     this.$songs.insertAdjacentHTML('beforeend',tophtml + html);
   }
+}
+
+function hide(element,cls){
+  let className = cls || 'hide';
+  element.classList.add(className);
+}
+function show(element,cls){
+  let className = cls || 'hide';
+  element.classList.remove(className);
 }

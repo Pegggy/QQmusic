@@ -73,10 +73,11 @@ export default class MusicPlayer{
   }
   show(){
     this.$ct.classList.remove('hide') || this.$ct.classList.remove('remove');
-
+    document.body.classList.add('noscroll');
   }
 
   hide(){
     this.$ct.classList.add('remove');
+    document.body.classList.remove('noscroll');
   }
 }

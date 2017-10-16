@@ -28,15 +28,21 @@
       width: 100%;
       position: absolute;
       }
-      .icon-play{
+      .icon-bofang{
         position: absolute;
         bottom: 4px;
         right: 4px;
+        width: 24px;
+        height: 24px;
+        border: solid 1px $icon-color;
+        border-radius: 50%;
+        text-align: center;
         &:after{
           font-family: "iconfont";
-          content: '\e633';
+          content: '\e87c';
           font-size: $icon-height;
           color: $icon-color;
+          line-height: 24px;
         }
       }
     }

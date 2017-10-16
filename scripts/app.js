@@ -31,7 +31,6 @@ function render(json){
 function onHashChange(){
   let hash = location.hash;
   let options = {};
-  console.log(hash);
   if(/^#player\?.+/.test(hash)){
     let keys = hash.slice(hash.slice(hash.indexOf('?') + 1)).match(/(\w+)=([^&]+)/g);
     keys.map(key =>{
@@ -81,7 +80,7 @@ function renderRadioList(radioList){
         <a href="javascript:;">
           <div class="media-wrap">
             <img src=${item.picUrl} alt="">
-            <i class="iconfont icon-play"></i>
+            <i class="iconfont icon-bofang"></i>
           </div>
           <div class="media-info">
             <h3 class="media-title">${item.Ftitle}</h3>
