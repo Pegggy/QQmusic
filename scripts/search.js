@@ -5,6 +5,7 @@ export class Search{
     this.$input = this.$ct.querySelector('#search-input');
     this.$songs = this.$ct.querySelector('.search-content');
     this.$cancelBtn = this.$ct.querySelector('.cancel-btn');
+    this.$searchRecord = this.$ct.querySelector('.search-record');
     this.$input.addEventListener('focus',this.onFocus.bind(this));
     this.$cancelBtn.addEventListener('click',this.onBtnClick.bind(this));
     this.$input.addEventListener('keyup',this.onKeyUp.bind(this));
@@ -22,6 +23,7 @@ export class Search{
     this.$ct.querySelector('.hot-search').classList.add('hide');
     this.$ct.querySelector('.result-wrap').classList.remove('hide');
     this.$cancelBtn.classList.remove('hide');
+    this.$searchRecord.classList.remove('hide');
   }
   onBtnClick(event){
     this.cancel = !this.cancel;
@@ -31,12 +33,13 @@ export class Search{
       this.$ct.querySelector('.result-wrap').classList.add('hide');
       this.$ct.querySelector('.cancel-btn').classList.add('hide');
       this.$ct.querySelector('.nomore').classList.add('hide');
+      this.$searchRecord.classList.add('hide');
     }
   }
   onKeyUp(event){
     let keyword = event.target.value.trim();
     if(!keyword) this.reset();
-    if(event.keyCode !== 13 || this.isLoading ) return
+    if(event.keyCode !== 13 || this.isLoading ) return;
     this.search(keyword)
   }
   onScrollFn(event){

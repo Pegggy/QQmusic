@@ -45,6 +45,49 @@
     padding: 0 4px 0 10px;
   }
 }
+.search-record{
+  background: #fff;
+  li{
+    border-top: 1px solid #ededed;
+    padding: 0 15px;
+    list-style: none;
+  }
+  .record-keyword{
+    position: relative;
+    display: block;
+    height: 44px;
+    line-height: 44px;
+    color: #000;
+    display: block;
+    padding-left: 30px;
+  }
+  .icon-shijian{
+    position: absolute;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    &:after{
+      font-family: "iconfont";
+      content: '\e64d';
+      display: block;
+      font-size: 18px;
+      color: $arrow-color;
+    }
+  }
+  .icon-cuowu{
+    position: absolute;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    &:after{
+      font-family: "iconfont";
+      content: '\e641';
+      display: block;
+      font-size: 20px;
+      color: $arrow-color;
+    }
+  }
+}
 .search-content{
   position: relative;
   background: #fff;

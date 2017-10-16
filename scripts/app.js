@@ -17,7 +17,6 @@ fetch('/json/toplist.json')
 let search = new Search(document.querySelector('.search-tab'));
 let player = new MusicPlayer(document.querySelector('#player'));
 let playBtn = document.querySelector('.player-btn');
-window.player = player;
 onHashChange();
 playBtn.addEventListener('click',()=>{
   player.show();
@@ -38,7 +37,7 @@ function onHashChange(){
     keys.map(key =>{
       let obj = {},
           attr = key.split('=')[0],
-          value = key.split('=')[1];
+          value = decodeURIComponent(key.split('=')[1]);
       obj[attr] = value;
       options = Object.assign({},options,obj);
     })
