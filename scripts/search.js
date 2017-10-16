@@ -9,21 +9,44 @@ export class Search{
     this.$input.addEventListener('focus',this.onFocus.bind(this));
     this.$cancelBtn.addEventListener('click',this.onBtnClick.bind(this));
     this.$input.addEventListener('keyup',this.onKeyUp.bind(this));
+    this.$searchRecord.addEventListener('click',this.onRecordClick.bind(this));
     this.onscroll = throttle(this.onScrollFn.bind(this),500);
     this.keyword = '';
+    this.searchRecord = [];
+    window.localStorage.setItem("search_record",this.searchRecord);
     this.page = 1;
     this.perpage = 20;
     this.cancel = false;
     this.end = false;
     this.isLoading = false;
     window.addEventListener('scroll',this.onscroll);
-
+  }
+  searchHistory(keyword){
+    this.searchRecord.push(keyword);
+    window.localStorage["search_record"] = this.searchRecord;
+  }
+  showRecord(){
+    this.$searchRecord.innerHTML = '';
+    if(!window.localStorage["search_record"])return;
+    let records = window.localStorage["search_record"];
+    let keywords = records.split(',');
+    let html = keywords.map(keyword => `
+      <li>
+        <a href="javascript:;" class="record-keyword" data-key="${keyword}">
+          <i class="iconfont icon-shijian"></i>
+          <span>${keyword}</span>
+          <i class="iconfont icon-cuowu"></i>
+        </a>
+      </li>
+    `).join('');
+    this.$searchRecord.insertAdjacentHTML('beforeend',html);
   }
   onFocus(event){
     this.$ct.querySelector('.hot-search').classList.add('hide');
     this.$ct.querySelector('.result-wrap').classList.remove('hide');
     this.$cancelBtn.classList.remove('hide');
     this.$searchRecord.classList.remove('hide');
+    this.showRecord();
   }
   onBtnClick(event){
     this.cancel = !this.cancel;
@@ -40,10 +63,11 @@ export class Search{
     let keyword = event.target.value.trim();
     if(!keyword) this.reset();
     if(event.keyCode !== 13 || this.isLoading ) return;
-    this.search(keyword)
+    this.searchHistory(keyword);
+    this.search(keyword); 
+    this.$searchRecord.classList.add('hide'); 
   }
   onScrollFn(event){
-
     if(this.end) {
       this.$ct.querySelector('.nomore').classList.remove('hide');
       return window.removeEventListener('scroll',this.onscroll);
@@ -54,6 +78,7 @@ export class Search{
   }
   reset(){
     this.keyword = '';
+    this.$input.value = '';
     this.page = 1;
     this.$songs.innerHTML = '';
   }
@@ -77,7 +102,12 @@ export class Search{
         this.isLoading = false;
         this.hideLoading();
       })
-    }
+  }
+  onRecordClick(event){
+    let value = event.target.dataset.key;
+    this.search(value);
+    this.$searchRecord.classList.add('hide');
+  }
   showLoading(){
     this.$ct.querySelector('.loading').classList.remove('hide');
   }
