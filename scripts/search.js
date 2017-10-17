@@ -64,12 +64,7 @@ export class Search{
     this.searchRecord.push(keyword);
     this.storage.setItem("search_record",this.searchRecord);
   }
-  // recordshow(){
-  //   this.$record.classList.remove('hide');
-  // }
-  // recordhide(){
-  //   this.$record.classList.add('hide');
-  // }
+
   onFocus(event){
     this.$ct.querySelector('.hot-search').classList.add('hide');
     show(this.$cancelBtn);
@@ -87,12 +82,7 @@ export class Search{
       hide(this.$record);
     }
   }
-  // onBlur(event){
-  //   console.log(event.target);
-  //   let key = this.record.keyword;
-  //   console.log(key);
-  //   this.search(key);
-  // }
+
   onKeyUp(event){
     let keyword = event.target.value.trim();
     if(!keyword) this.reset();
@@ -138,23 +128,7 @@ export class Search{
         hide(this.$ct.querySelector('.loading'))
       })
   }
-  // onRecordClick(event){
-  //   let target = event.target;
-  //   if(target === this.record.querySelector('.icon-cuowu')){
-  //     let keyword = target.parentNode.dataset.key;
-  //     this.record.removeRecord(keyword)
-  //     this.record.showRecord();
-  //   }
-  //   let value = event.target.dataset.key;
-  //   this.search(value);
-  //   this.record.hide();
-  // }
-  // showLoading(){
-  //   this.$ct.querySelector('.loading').classList.remove('hide');
-  // }
-  // hideLoading(){
-  //   this.$ct.querySelector('.loading').classList.add('hide');
-  // }
+
   renderSinger(zhida,type){
     let imgUrl;
     if(type === 2){
