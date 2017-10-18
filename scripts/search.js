@@ -1,5 +1,5 @@
 import throttle from './throttle.js'
-export class Search{
+export default class Search{
   constructor(ct){
     this.$ct = ct;
     this.$input = this.$ct.querySelector('#search-input');
@@ -24,9 +24,24 @@ export class Search{
     this.cancel = false;
     this.end = false;
     this.isLoading = false;
-    
+    this.getHotkey();
   }
-
+  getHotkey(){
+    fetch('http://localhost:4000/hotkey')
+      .then(res => res.json())
+      .then(json =>this.renderHotkey(json.data))
+  }
+  renderHotkey(data){
+    let specialhtml = `<a href="${data.special_url}" class="hot-key tags">${data.special_key}</a>`;
+    let hotkey = data.hotkey;
+    if(hotkey.length > 6){
+      hotkey = hotkey.slice(0,6);
+    }
+    let html = hotkey.map(key => `
+      <a href="#n=${key.n}" class="tags">${key.k}</a>
+    `).join('');
+    this.$ct.querySelector('.hot-tags').insertAdjacentHTML('beforeend',specialhtml + html);
+  }
   recordClick(event){
     let target = event.target;
     if(target === this.$ct.querySelector('.icon-cuowu')){

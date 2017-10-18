@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="src/swiper-3.4.2.min.css"> 
+  <link rel="stylesheet" href="css/app.css">
   <title>QQ Music</title>
 </head>
 <body>
@@ -12,20 +14,17 @@
     <a href="javascript:;" class="player-btn">播放器</a>
   </header>
   <nav class="nav">
-    <a href="#"  data-tab=".rec-tab" class="active">推荐</a>
+    <a href="#"  data-tab=".rec-tab">推荐</a>
     <a href="#" data-tab=".rank-tab">排行榜</a>
-    <a href="#" data-tab=".search-tab">搜索</a>
+    <a href="#" data-tab=".search-tab" class="active">搜索</a>
   </nav>
   <div class="content-wrap">
-    <div class="rec-tab">
-      <div class="swiper-container">
-         <div class="swiper-wrapper"></div>
-         <div class="swiper-pagination" id="swiper-pagination"></div>
-      </div>
+    <div class="rec-tab hide">
+      <div class="swiper-container"></div>
     </div>
     <div class="rank-tab hide">
     </div>
-    <div class="search-tab hide">
+    <div class="search-tab">
       <div class="search-bar">
         <div class="search-wrap">
           <form action="#" class="search-form" autocomplete="off">
@@ -51,13 +50,13 @@
       <div class="hot-search">
         <h3>热门搜索</h3>
         <div class="hot-tags">
-          <!-- <a href="#" class="hot-key tags">中国新歌声第二季</a>
+          <a href="#" class="hot-key tags">中国新歌声第二季</a>
           <a href="#" class="tags">DJ舞曲(华语)系列5 DJ </a>
           <a href="#" class="tags">WHAT ARE WORDS </a>
           <a href="#" class="tags">中国好声音 第六季 </a>
           <a href="#" class="tags">非酋 薛明媛/朱贺 </a>
           <a href="#" class="tags">紫 </a>
-          <a href="#" class="tags">一生所爱 卢冠廷 </a> -->
+          <a href="#" class="tags">一生所爱 卢冠廷 </a>
         </div>
       </div>
     </div>
@@ -85,5 +84,7 @@
       <div class="play-background"></div>
     </div>
   </div>
-</body>
+  <script src="src/swiper-3.4.2.min.js"></script>
+  <script src="dist/main.js"></script>
+<script type="text/javascript" src="main.js"></script></body>
 </html>
