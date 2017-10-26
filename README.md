@@ -17,7 +17,7 @@ ES6 + Webpack + Sass + Nodejs + Express + Cors + Request
 
 1. 将项目克隆到本地
 ```
-git@github.com:Pegggy/QQmusic.git
+git clone git@github.com:Pegggy/QQmusic.git
 ```
 2. 安装依赖
 ```
